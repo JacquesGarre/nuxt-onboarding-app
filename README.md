@@ -3,7 +3,7 @@
 ## Setup
 
 ```bash
-# npm
+# git
 git clone
 ```
 
