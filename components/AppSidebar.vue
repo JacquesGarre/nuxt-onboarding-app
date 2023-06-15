@@ -9,25 +9,40 @@
     <hr class="horizontal dark mt-0">
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <AppSidebarButton />
-        </li>
-        <li class="nav-item">
-          <AppSidebarButton />
-        </li>
-        <li class="nav-item">
-          <AppSidebarButton />
-        </li>
-        <li class="nav-item mt-3">
-          <AppSidebarSeparator />
-        </li>
-        <li class="nav-item">
-          <AppSidebarButton />
-        </li>
-        <li class="nav-item">
-          <AppSidebarButton />
+        <li class="nav-item" v-for="menuItem in menuItems">
+          <AppSidebarButton :menuItem=menuItem v-if="(menuItem.type=='button')" />
+          <AppSidebarSeparator :menuItem=menuItem v-if="(menuItem.type=='separator')"/>
         </li>
       </ul>
     </div>
   </aside>
 </template>
+<script setup>
+    const menuItems = [
+        {
+            type: 'button',
+            label: 'Dashboard',
+            active: true,
+        },
+        {
+            type: 'separator',
+            label: 'ORGANIZATION',
+        },
+        {
+            type: 'button',
+            label: 'My Organization',
+        },
+        {
+            type: 'button',
+            label: 'People',
+        },
+        {
+            type: 'button',
+            label: 'Roles',
+        },
+        {
+            type: 'separator',
+            label: 'ON BOARDING',
+        }
+    ]
+</script>

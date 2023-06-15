@@ -1,5 +1,5 @@
 <template>
-    <NuxtLink to="/admin" class="nav-link active">
+    <NuxtLink to="/admin" :class="className">
         <div
             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
             <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -21,6 +21,14 @@
                 </g>
             </svg>
         </div>
-        <span class="nav-link-text ms-1">Dashboard</span>
+        <span class="nav-link-text ms-1">{{ menuItem.label }}</span>
     </NuxtLink>
 </template>
+<script setup>
+    const props = defineProps({
+        menuItem: Object
+    })
+    const className = props.menuItem.active ? 'nav-link active' : 'nav-link' 
+</script>
+
+

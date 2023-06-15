@@ -412,9 +412,9 @@ function toggleSidenav() {
 
 // Resize navbar color depends on configurator active type of sidenav
 
-let referenceButtons = document.querySelector('[data-class]');
+// let referenceButtons = document.querySelector('[data-class]');
 
-window.addEventListener("resize", navbarColorOnResize);
+// window.addEventListener("resize", navbarColorOnResize);
 
 function navbarColorOnResize() {
   if (window.innerWidth > 1200) {
