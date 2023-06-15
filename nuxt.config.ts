@@ -1,6 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     devtools: { enabled: true },
+    modules: [
+        '@pinia/nuxt',
+    ],
     css: [
         '~/assets/css/OpenSans.css',
         '~/assets/css/nucleo-icons.css',
@@ -8,6 +11,12 @@ export default defineNuxtConfig({
         '~/assets/css/soft-ui-dashboard.min.css',
         '~/assets/css/onboarding-app.css',
     ],
+    router: {
+        options: {
+          linkActiveClass: "",
+          linkExactActiveClass: "active"
+        }
+    },
     app: {
         head: {
             script: [

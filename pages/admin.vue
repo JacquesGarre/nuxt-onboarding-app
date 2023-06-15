@@ -3,6 +3,9 @@
         <AppSidebar />
         <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
             <AppNavbar />
+            <div class="container-fluid py-4">
+                <NuxtPage />
+            </div>
         </main>
     </div>
 </template>
