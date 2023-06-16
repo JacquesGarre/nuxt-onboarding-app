@@ -40,3 +40,11 @@ npm run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+
+## Hours of development
+
+13/06/23 : 3h
+14/06/23 : 3h
+15/06/23 : 3h
+16/06/23 : 3h
