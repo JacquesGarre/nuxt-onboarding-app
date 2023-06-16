@@ -45,6 +45,9 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 ## Hours of development
 
 13/06/23 : 3h
+
 14/06/23 : 3h
+
 15/06/23 : 3h
+
 16/06/23 : 3h
