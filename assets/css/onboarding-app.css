@@ -19,3 +19,7 @@ main {
 #sidenav-collapse-main li.nav-item a.active .icon svg path {
     fill: #fff;
 }
+
+#lang-select {
+    min-width: 60px;
+}

@@ -1,8 +1,7 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    devtools: { enabled: true },
+    devtools: { enabled: false },
     modules: [
-        '@pinia/nuxt',
+        '@pinia/nuxt'
     ],
     css: [
         '@fortawesome/fontawesome-svg-core/styles.css',
@@ -14,8 +13,8 @@ export default defineNuxtConfig({
     ],
     router: {
         options: {
-          linkActiveClass: "",
-          linkExactActiveClass: "active"
+            linkActiveClass: "",
+            linkExactActiveClass: "active"
         }
     },
     app: {
@@ -24,22 +23,22 @@ export default defineNuxtConfig({
                 {
                     src: "https://code.jquery.com/jquery-3.3.1.slim.min.js",
                 },
-                {   
+                {
                     src: '/js/core/bootstrap.bundle.min.js',
                 },
-                {   
+                {
                     src: '/js/core/popper.min.js',
                 },
-                {   
+                {
                     src: '/js/plugins/bootstrap-notify.js',
                 },
-                {   
+                {
                     src: '/js/plugins/perfect-scrollbar.min.js',
                 },
-                {   
+                {
                     src: '/js/plugins/smooth-scrollbar.min.js',
                 },
-                {   
+                {
                     src: '/js/soft-ui-dashboard.js',
                 }
             ],

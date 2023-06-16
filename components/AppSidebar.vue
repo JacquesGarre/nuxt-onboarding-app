@@ -5,8 +5,8 @@
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
                 aria-hidden="true" id="iconSidenav"></i>
             <NuxtLink to="/admin/dashboard" class="navbar-brand m-0 text-center p-1">
-                <span class="font-weight-bold fs-4">{{ title }}</span><br>
-                <i class="text-secondary opacity-5 fs-7">Powered by OnboardR</i>
+                <span class="font-weight-bold fs-4">{{ organization.name }}</span><br>
+                <i class="opacity-5 fs-7">{{ $t('poweredBy') }} OnboardR</i>
             </NuxtLink>
             
         </div>
@@ -22,8 +22,6 @@
     </aside>
 </template>
 <script setup>
-    import { useMenuStore } from '~/store/menu'
-    const menuStore = useMenuStore()
-    const menu = menuStore.menu
-    const title = menuStore.organization.name
+    const { menu } = useMenu()
+    const { organization } = useOrganization()
 </script>
