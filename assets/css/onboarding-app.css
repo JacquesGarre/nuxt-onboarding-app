@@ -1,5 +1,7 @@
+
+
 main {
-    min-height:100vh;
+    min-height: 100vh;
 }
 
 #sidenav-collapse-main li.nav-item a {
@@ -8,7 +10,7 @@ main {
 
 #sidenav-collapse-main li.nav-item a:hover {
     color: #344767;
-    box-shadow: 0 20px 27px 0 rgba(0,0,0,.05);
+    box-shadow: 0 20px 27px 0 rgba(0, 0, 0, .05);
     border-radius: 0.5rem;
 }
 
@@ -23,3 +25,8 @@ main {
 #lang-select {
     min-width: 60px;
 }
+
+.icon-l .svg-inline--fa {
+    height: 1.5em;
+}
+
