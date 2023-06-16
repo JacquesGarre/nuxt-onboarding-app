@@ -2,6 +2,9 @@ import { defineStore } from 'pinia'
 
 export const useMenuStore = defineStore('menuStore', {
     state: () => ({
+        organization: {
+            name: 'Tool4Staffing'
+        },
         currentRoute: '',
         menu: [
         {

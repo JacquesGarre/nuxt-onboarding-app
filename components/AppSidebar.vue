@@ -4,9 +4,11 @@
         <div class="sidenav-header">
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
                 aria-hidden="true" id="iconSidenav"></i>
-            <NuxtLink to="/admin/dashboard" class="navbar-brand m-0 text-center text-uppercase">
-                <span class="font-weight-bold">Onboarding App</span>
+            <NuxtLink to="/admin/dashboard" class="navbar-brand m-0 text-center p-1">
+                <span class="font-weight-bold fs-4">{{ title }}</span><br>
+                <i class="text-secondary opacity-5 fs-7">Powered by OnboardR</i>
             </NuxtLink>
+            
         </div>
         <hr class="horizontal dark mt-0">
         <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
@@ -23,4 +25,5 @@
     import { useMenuStore } from '~/store/menu'
     const menuStore = useMenuStore()
     const menu = menuStore.menu
+    const title = menuStore.organization.name
 </script>
