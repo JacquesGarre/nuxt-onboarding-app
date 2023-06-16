@@ -8,19 +8,41 @@ export const useMenu = () => {
             type: 'button',
             label: 'myOrganizationLabel',
             url: '/admin/organization',
-            icon: 'building-user'
+            icon: 'building-user',
+            description: 'myOrganizationDescription',
+            tabs: [
+                {
+                    label: 'infoLabel',
+                    url: '/admin/organization',
+                    icon: 'building-user'
+                },
+                {
+                    label: 'adminsLabel',
+                    url: '/admin/organization/admins',
+                    icon: 'building-user'
+                },
+                {
+                    label: 'settingsLabel',
+                    url: '/admin/organization/settings',
+                    icon: 'cog'
+                }
+            ]
         },
         {
             type: 'button',
             label: 'peopleLabel',
             url: '/admin/people',
-            icon: 'users'
+            icon: 'users',
+            description: 'peopleDescription',
+            tabs: []
         },
         {
             type: 'button',
             label: 'rolesLabel',
             url: '/admin/roles',
-            icon: 'address-card'
+            icon: 'address-card',
+            description: 'rolesDescription',
+            tabs: []
         },
         {
             type: 'separator',
@@ -30,13 +52,17 @@ export const useMenu = () => {
             type: 'button',
             label: 'processesLabel',
             url: '/admin/processes',
-            icon: 'fa-exchange-alt'
+            icon: 'fa-exchange-alt',
+            description: 'processesDescription',
+            tabs: []
         },
         {
             type: 'button',
             label: 'onboardingLabel',
             url: '/admin/onboarding',
-            icon: 'fa-road'
+            icon: 'fa-road',
+            description: 'onboardingDescription',
+            tabs: []
         },
         {
             type: 'separator',
@@ -46,13 +72,17 @@ export const useMenu = () => {
             type: 'button',
             label: 'inventoryLabel',
             url: '/admin/inventory',
-            icon: 'fa-warehouse'
+            icon: 'fa-warehouse',
+            description: 'inventoryDescription',
+            tabs: []
         },
         {
             type: 'button',
             label: 'softwareLicencesLabel',
             url: '/admin/software-licences',
-            icon: 'fa-key'
+            icon: 'fa-key',
+            description: 'softwareLicencesDescription',
+            tabs: []
         }] 
     );
     return { menu }

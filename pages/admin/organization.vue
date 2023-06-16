@@ -1,0 +1,4 @@
+<template>
+    <AppPageHeader />
+    <NuxtPage />
+</template>
