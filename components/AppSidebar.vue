@@ -4,7 +4,7 @@
         <div class="sidenav-header">
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
                 aria-hidden="true" id="iconSidenav"></i>
-            <NuxtLink to="/admin" class="navbar-brand m-0 text-center text-uppercase">
+            <NuxtLink to="/admin/dashboard" class="navbar-brand m-0 text-center text-uppercase">
                 <span class="font-weight-bold">Onboarding App</span>
             </NuxtLink>
         </div>

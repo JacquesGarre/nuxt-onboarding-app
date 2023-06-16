@@ -8,11 +8,14 @@ main {
 
 #sidenav-collapse-main li.nav-item a:hover {
     color: #344767;
-    background-color: #fff;
     box-shadow: 0 20px 27px 0 rgba(0,0,0,.05);
     border-radius: 0.5rem;
 }
 
 .g-sidenav-show .sidenav .nav-link-text {
     transition: none;
+}
+
+#sidenav-collapse-main li.nav-item a.active .icon svg path {
+    fill: #fff;
 }

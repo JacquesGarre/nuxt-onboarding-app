@@ -3,12 +3,7 @@ import { defineStore } from 'pinia'
 export const useMenuStore = defineStore('menuStore', {
     state: () => ({
         currentRoute: '',
-        menu: [{
-            type: 'button',
-            label: 'Dashboard',
-            url: '/admin/dashboard',
-            active: true,
-        },
+        menu: [
         {
             type: 'separator',
             label: 'ORGANIZATION',
@@ -17,16 +12,19 @@ export const useMenuStore = defineStore('menuStore', {
             type: 'button',
             label: 'My Organization',
             url: '/admin/organization',
+            icon: 'building-user'
         },
         {
             type: 'button',
             label: 'People',
             url: '/admin/people',
+            icon: 'users'
         },
         {
             type: 'button',
             label: 'Roles',
             url: '/admin/roles',
+            icon: 'address-card'
         },
         {
             type: 'separator',
