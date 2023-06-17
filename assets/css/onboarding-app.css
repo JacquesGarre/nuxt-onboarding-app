@@ -30,7 +30,14 @@ main {
     height: 1.5em;
 }
 
-/* .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-    color: var(--bs-nav-pills-link-active-color) !important;
-    background-color: var(--bs-nav-pills-link-active-bg) !important;
-} */
+.form-control {
+    margin-bottom: 12px;
+}
+
+label, .form-label {
+    font-size: 14px;
+}
+
+h6 {
+    font-size: 19px;
+}

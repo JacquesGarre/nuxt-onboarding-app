@@ -1,6 +1,6 @@
 export const useOrganization = () => {
     const organization = ref({
-        name: 'Onboarding App'
+        name: 'Company name'
     });
     return { organization }
 }

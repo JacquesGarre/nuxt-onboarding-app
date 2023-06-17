@@ -13,5 +13,20 @@
     "myOrganizationDescription":"This page empowers you to effortlessly manage and navigate through your organization's information.",
     "infoLabel": "Info",
     "adminsLabel": "Admins",
-    "settingsLabel": "Settings"
+    "settingsLabel": "Settings",
+    "organizationInformationNameInputLabel": "Name",
+    "organizationInformationNameInputPlaceholder": "",
+    "organizationInformationDescriptionInputLabel": "Description", 
+    "organizationInformationDescriptionInputPlaceholder": "Enter your organization's description",
+    "organizationInformationAddressInputLabel": "Address",
+    "organizationInformationAddressInputPlaceholder": "",
+    "organizationInformationCityInputLabel": "City",
+    "organizationInformationCityInputPlaceholder": "",
+    "organizationInformationPostalCodeInputLabel": "Postal Code",
+    "organizationInformationPostalCodeInputPlaceholder": "",
+    "organizationInformationCountryInputLabel": "Country",
+    "organizationInformationCountryInputPlaceholder": "",
+    "submitBtn": "Submit",
+    "fieldRequiredError": "{fieldLabel} is required",
+    "minLengthError": "{fieldLabel} must be at least {length} characters long"
 }
