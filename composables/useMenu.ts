@@ -9,23 +9,17 @@ export const useMenu = () => {
             label: 'myOrganizationLabel',
             url: '/admin/organization',
             icon: 'building-user',
+            iconPrefix: 'fa-solid',
             description: 'myOrganizationDescription',
             tabs: [
                 {
                     label: 'infoLabel',
-                    url: '/admin/organization',
-                    icon: 'building-user'
+                    url: '/admin/organization'
                 },
                 {
                     label: 'adminsLabel',
-                    url: '/admin/organization/admins',
-                    icon: 'building-user'
-                },
-                // {
-                //     label: 'settingsLabel',
-                //     url: '/admin/organization/settings',
-                //     icon: 'cog'
-                // }
+                    url: '/admin/organization/admins'
+                }
             ]
         },
         {
@@ -33,6 +27,7 @@ export const useMenu = () => {
             label: 'peopleLabel',
             url: '/admin/people',
             icon: 'users',
+            iconPrefix: 'fa-solid',
             description: 'peopleDescription',
             tabs: []
         },
@@ -40,6 +35,7 @@ export const useMenu = () => {
             type: 'button',
             label: 'rolesLabel',
             url: '/admin/roles',
+            iconPrefix: 'fa-solid',
             icon: 'address-card',
             description: 'rolesDescription',
             tabs: []
@@ -52,6 +48,7 @@ export const useMenu = () => {
             type: 'button',
             label: 'processesLabel',
             url: '/admin/processes',
+            iconPrefix: 'fa-solid',
             icon: 'fa-exchange-alt',
             description: 'processesDescription',
             tabs: []
@@ -60,6 +57,7 @@ export const useMenu = () => {
             type: 'button',
             label: 'onboardingLabel',
             url: '/admin/onboarding',
+            iconPrefix: 'fa-solid',
             icon: 'fa-road',
             description: 'onboardingDescription',
             tabs: []
@@ -72,6 +70,7 @@ export const useMenu = () => {
             type: 'button',
             label: 'inventoryLabel',
             url: '/admin/inventory',
+            iconPrefix: 'fa-solid',
             icon: 'fa-warehouse',
             description: 'inventoryDescription',
             tabs: []
@@ -80,6 +79,7 @@ export const useMenu = () => {
             type: 'button',
             label: 'softwareLicencesLabel',
             url: '/admin/software-licences',
+            iconPrefix: 'fa-solid',
             icon: 'fa-key',
             description: 'softwareLicencesDescription',
             tabs: []

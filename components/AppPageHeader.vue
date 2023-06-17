@@ -10,7 +10,7 @@
                 <div class="col-auto">
                     <div
                         class="icon icon-shape icon-l shadow border-radius-md text-center me-2 d-flex align-items-center justify-content-center bg-white text-dark">
-                        <font-awesome-icon :icon="['fas', currentPage.icon]" />
+                        <font-awesome-icon :icon="[currentPage.iconPrefix, currentPage.icon]" />
                     </div>
                 </div>
                 <div class="col-auto my-auto">
@@ -43,5 +43,5 @@ const { menu } = useMenu()
 const menuArray = Object.values(menu.value);
 const route = useRoute()
 const currentPath = route.path;
-const currentPage = menuArray.find(item => item.url === currentPath);
+const currentPage = menuArray.find(item => currentPath.includes(item.url));
 </script>
