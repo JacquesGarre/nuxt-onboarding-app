@@ -90,10 +90,12 @@ import { required, minLength, helpers } from '@vuelidate/validators'
 export default {
     setup() {
         const { organization, updateOrganizationData } = useOrganization()
+        const i18n = useI18n()
         return {
             v$: useVuelidate(),
             organization: organization, 
             showSubmit: false,
+            i18n: i18n,
             updateOrganizationData: updateOrganizationData
         }
     },
@@ -111,25 +113,25 @@ export default {
 
     },
     validations() {
-        const i18n = useI18n()
+        
         return {
             organizationData: {
                 name: {
                     minLength: helpers.withMessage(
-                        i18n.t(
+                        this.i18n.t(
                             'minLengthError', 
                             {
-                                fieldLabel: i18n.t('organizationInformationNameInputLabel'),
+                                fieldLabel: this.i18n.t('organizationInformationNameInputLabel'),
                                 length: 3
                             }
                         ), 
                         minLength(3)
                     ),
                     required: helpers.withMessage(
-                        i18n.t(
+                        this.i18n.t(
                             'fieldRequiredError', 
                             {
-                                fieldLabel: i18n.t('organizationInformationNameInputLabel')
+                                fieldLabel: this.i18n.t('organizationInformationNameInputLabel')
                             }
                         ), 
                         required
