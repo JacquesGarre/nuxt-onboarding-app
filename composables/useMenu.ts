@@ -21,11 +21,11 @@ export const useMenu = () => {
                     url: '/admin/organization/admins',
                     icon: 'building-user'
                 },
-                {
-                    label: 'settingsLabel',
-                    url: '/admin/organization/settings',
-                    icon: 'cog'
-                }
+                // {
+                //     label: 'settingsLabel',
+                //     url: '/admin/organization/settings',
+                //     icon: 'cog'
+                // }
             ]
         },
         {
