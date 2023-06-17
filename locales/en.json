@@ -27,6 +27,7 @@
     "organizationInformationCountryInputLabel": "Country",
     "organizationInformationCountryInputPlaceholder": "",
     "submitBtn": "Submit",
+    "saveChangesBtn": "Save changes",
     "editBtn": "Edit",
     "fieldRequiredError": "{fieldLabel} is required",
     "minLengthError": "{fieldLabel} must be at least {length} characters long",

@@ -46,3 +46,19 @@ label, .form-label {
 h6 {
     font-size: 19px;
 }
+
+.form-control {
+    border: none;
+}
+
+.form-control:focus, .hasbeenfocused {
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #d2d6da!important;
+    outline: 0;
+    box-shadow: none!important;
+}
+
+textarea {
+    resize: none;
+}

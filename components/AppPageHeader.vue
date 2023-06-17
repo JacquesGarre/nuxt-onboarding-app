@@ -31,7 +31,6 @@
                                     <span class="ms-1">{{ $t(tab.label) }}</span>
                                 </NuxtLink>
                             </li>
-                            <!-- <div class="moving-tab position-absolute nav-link" style="padding: 0px; transition: all 0.5s ease 0s; transform: translate3d(0px, 0px, 0px); width: 136px;"><a class="nav-link mb-0 px-0 py-1 active" data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="true">-</a></div> -->
                         </ul>
                     </div>
                 </div>
