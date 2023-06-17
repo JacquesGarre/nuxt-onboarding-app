@@ -45,7 +45,7 @@
                                         </td>
                                         <td class="align-middle">
                                             <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
-                                                data-toggle="tooltip" data-original-title="Edit user">
+                                                data-toggle="tooltip" data-original-title="Edit user" @click="openEditModal(admin)">
                                                 {{ $t('editBtn') }}
                                             </a>
                                         </td>
@@ -60,8 +60,35 @@
     </div>
 </template>
 <script setup>
+
+    import { useModal } from 'vue-final-modal'
+    import { useI18n } from "vue-i18n";
+    import AppModalConfirm from '~/components/AppModalConfirm.vue'
+
     const { organization, updateOrganizationData } = useOrganization()
+    const i18n = useI18n()
     const admins = organization.admins
+
+
+
+    const openEditModal = (admin) => {
+
+
+        const { open, close } = useModal({
+            component: AppModalConfirm,
+            attrs: {
+                title: i18n.t('editAdminModalTitle', {adminName : admin.firstname + ' ' + admin.lastname}),
+                onConfirm() {
+                    close()
+                },
+            },
+            slots: {
+                default: '<p>Edit</p>',
+            },
+        })
+
+        open()
+    }
 
 
 </script>

@@ -11,8 +11,8 @@
     "inventoryLabel": "Inventory",
     "softwareLicencesLabel": "Software Licences",
     "myOrganizationDescription":"Manage and navigate through your organization's information",
-    "infoLabel": "Info",
-    "adminsLabel": "Admins",
+    "infoLabel": "Information",
+    "adminsLabel": "Administrators",
     "settingsLabel": "Settings",
     "organizationInformationNameInputLabel": "Name",
     "organizationInformationNameInputPlaceholder": "",
@@ -34,5 +34,6 @@
     "organizationAdminsTableTitle": "Administrators",
     "organizationAdminsTableNameColumn": "Name",
     "organizationAdminsTableRolesColumn": "Roles",
-    "organizationAdminsTableJoinedOnColumn": "Joined On"
+    "organizationAdminsTableJoinedOnColumn": "Joined On",
+    "editAdminModalTitle": "Edit {adminName}'s roles"
 }

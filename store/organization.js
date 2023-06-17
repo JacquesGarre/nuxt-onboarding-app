@@ -20,12 +20,12 @@ export const useOrganizationStore = defineStore('organization', {
                     joinedOn: '18/05/2022'
                 },
                 {
-                    picture: '/assets/img/team-2.jpg',
-                    firstname: 'John',
-                    lastname: 'Michael',
-                    email: 'yoyoyo@gmail.com',
-                    roles: ['Developer', 'IT', 'Admin'],
-                    joinedOn: '18/05/2022'
+                    picture: '/assets/img/team-3.jpg',
+                    firstname: 'Bobby',
+                    lastname: 'La pointe',
+                    email: 'yascascascyo@gmail.com',
+                    roles: ['Manager', 'HR', 'Admin'],
+                    joinedOn: '23/04/2022'
                 }
             ]
         }

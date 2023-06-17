@@ -3,6 +3,7 @@ export default defineNuxtConfig({
     modules: ['@pinia/nuxt'],
     devServerHandlers: [],
     css: [
+        'vue-final-modal/style.css',
         '@fortawesome/fontawesome-svg-core/styles.css',
         '~/assets/css/OpenSans.css',
         '~/assets/css/nucleo-icons.css',
