@@ -10,7 +10,7 @@
     "inventorySeparator": "Inventory",
     "inventoryLabel": "Inventory",
     "softwareLicencesLabel": "Software Licences",
-    "myOrganizationDescription":"This page empowers you to effortlessly manage and navigate through your organization's information.",
+    "myOrganizationDescription":"Manage and navigate through your organization's information",
     "infoLabel": "Info",
     "adminsLabel": "Admins",
     "settingsLabel": "Settings",
@@ -27,6 +27,11 @@
     "organizationInformationCountryInputLabel": "Country",
     "organizationInformationCountryInputPlaceholder": "",
     "submitBtn": "Submit",
+    "editBtn": "Edit",
     "fieldRequiredError": "{fieldLabel} is required",
-    "minLengthError": "{fieldLabel} must be at least {length} characters long"
+    "minLengthError": "{fieldLabel} must be at least {length} characters long",
+    "organizationAdminsTableTitle": "Admins of",
+    "organizationAdminsTableNameColumn": "Name",
+    "organizationAdminsTableRolesColumn": "Roles",
+    "organizationAdminsTableJoinedOnColumn": "Joined On"
 }

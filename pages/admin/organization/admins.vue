@@ -1,63 +1,65 @@
 <template>
     <div class="container-fluid py-4">
         <div class="row">
-            <div class="col-12 col-xl-12">
-                <div class="card h-100">
-                    <div class="card-header pb-0 p-3">
-                        <h6 class="mb-0">Admins</h6>
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-header pb-0">
+                        <h6>{{ $t('organizationAdminsTableTitle')}} {{ organization.name }}</h6>
                     </div>
-                    <div class="card-body p-3">
-                        <h6 class="text-uppercase text-body text-xs font-weight-bolder">Account</h6>
-                        <ul class="list-group">
-                            <li class="list-group-item border-0 px-0">
-                                <div class="form-check form-switch ps-0">
-                                    <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault">
-                                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                                        for="flexSwitchCheckDefault">Email me when someone follows me</label>
-                                </div>
-                            </li>
-                            <li class="list-group-item border-0 px-0">
-                                <div class="form-check form-switch ps-0">
-                                    <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault1">
-                                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                                        for="flexSwitchCheckDefault1">Email me when someone answers on my post</label>
-                                </div>
-                            </li>
-                            <li class="list-group-item border-0 px-0">
-                                <div class="form-check form-switch ps-0">
-                                    <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault2">
-                                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                                        for="flexSwitchCheckDefault2">Email me when someone mentions me</label>
-                                </div>
-                            </li>
-                        </ul>
-                        <h6 class="text-uppercase text-body text-xs font-weight-bolder mt-4">Application</h6>
-                        <ul class="list-group">
-                            <li class="list-group-item border-0 px-0">
-                                <div class="form-check form-switch ps-0">
-                                    <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault3">
-                                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                                        for="flexSwitchCheckDefault3">New launches and projects</label>
-                                </div>
-                            </li>
-                            <li class="list-group-item border-0 px-0">
-                                <div class="form-check form-switch ps-0">
-                                    <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault4">
-                                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                                        for="flexSwitchCheckDefault4">Monthly product updates</label>
-                                </div>
-                            </li>
-                            <li class="list-group-item border-0 px-0 pb-0">
-                                <div class="form-check form-switch ps-0">
-                                    <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault5">
-                                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                                    for="flexSwitchCheckDefault5">Subscribe to newsletter</label>
-                            </div>
-                            </li>
-                        </ul>
+                    <div class="card-body px-0 pt-0 pb-2">
+                        <div class="table-responsive p-0">
+                            <table class="table align-items-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            {{ $t('organizationAdminsTableNameColumn') }}</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            {{ $t('organizationAdminsTableRolesColumn') }}</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            {{ $t('organizationAdminsTableJoinedOnColumn') }}</th>
+                                        <th class="text-secondary opacity-7"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="admin in admins">
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div>
+                                                    <img :src="admin.picture" class="avatar avatar-sm me-3">
+                                                </div>
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{ admin.firstname }} {{ admin.lastname }}</h6>
+                                                    <p class="text-xs text-secondary mb-0">{{ admin.email }}</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="text-xs font-weight-bold mb-0">
+                                                {{ admin.roles.join(', ') }}
+                                            </p>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary text-xs font-weight-bold">{{ admin.joinedOn }}</span>
+                                        </td>
+                                        <td class="align-middle">
+                                            <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
+                                                data-toggle="tooltip" data-original-title="Edit user">
+                                                {{ $t('editBtn') }}
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
+                </div>           
             </div>
         </div>
     </div>
 </template>
+<script setup>
+    const { organization, updateOrganizationData } = useOrganization()
+    const admins = organization.admins
+</script>

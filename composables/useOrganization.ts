@@ -1,6 +1,10 @@
+import { useOrganizationStore } from '~/store/organization'
+
 export const useOrganization = () => {
-    const organization = ref({
-        name: 'Company name'
-    });
-    return { organization }
+    const organizationStore = useOrganizationStore()
+    const organization = organizationStore.organization;
+    const updateOrganizationData = (data: any) => {
+        organizationStore.updateOrganizationData(data)
+    };
+    return { organization, updateOrganizationData }
 }
