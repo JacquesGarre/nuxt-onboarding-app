@@ -40,6 +40,6 @@
     "organizationAdminsTableRolesColumn": "Roles",
     "organizationAdminsTableJoinedOnColumn": "Joined On",
     "removeAdminModalTitle": "",
-    "confirmAdminRemoval": "Are you sure you want to remove <b>{adminName}</b> from administrators of your workspace?",
-    "addAdminModal": "Add a new admin to {organizationName}"
+    "confirmAdminRemoval": "Are you sure you want to remove <b>{adminName}</b> from your workspace administrators?",
+    "addAdminModal": "Add an administrator to your workspace"
 }
