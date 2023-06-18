@@ -1,0 +1,62 @@
+{
+    "fields": {
+        "name": {
+            "type": "text",
+            "id": "name",
+            "class": "col-6",
+            "label": "organizationInformationNameInputLabel",
+            "placeholder": "organizationInformationNameInputPlaceholder"
+        },
+        "address": {
+            "type": "text",
+            "id": "address",
+            "class": "col-3",
+            "label": "organizationInformationAddressInputLabel",
+            "placeholder": "organizationInformationAddressInputPlaceholder"
+        },
+        "city": {
+            "type": "text",
+            "id": "city",
+            "class": "col-3",
+            "label": "organizationInformationCityInputLabel",
+            "placeholder": "organizationInformationCityInputPlaceholder"
+        },
+        "description": {
+            "type": "textarea",
+            "id": "description",
+            "class": "col-6",
+            "label": "organizationInformationDescriptionInputLabel",
+            "placeholder": "organizationInformationDescriptionInputPlaceholder",
+            "rows": 1
+        },
+        "postalCode": {
+            "type": "text",
+            "id": "postalCode",
+            "class": "col-3",
+            "label": "organizationInformationPostalCodeInputLabel",
+            "placeholder": "organizationInformationPostalCodeInputPlaceholder"
+        },
+        "country": {
+            "type": "text",
+            "id": "country",
+            "class": "col-3",
+            "label": "organizationInformationCountryInputLabel",
+            "placeholder": "organizationInformationCountryInputPlaceholder"
+        }
+    },
+    "display": [
+        ["name", "address", "city"],
+        ["description", "postalCode", "country"]
+    ],
+    "validations": {
+        "name": {
+            "minLength": 3,
+            "required": true
+        },
+        "address": {},
+        "city": {},
+        "description": {},
+        "postalCode": {},
+        "country": {}
+    }
+}

@@ -47,17 +47,17 @@ h6 {
     font-size: 19px;
 }
 
-.admin-panel .form-control {
+/* .admin-panel .form-control {
     border: none;
-}
+} */
 
-.admin-panel .form-control:focus, .hasbeenfocused {
+/* .admin-panel .form-control:focus, .hasbeenfocused {
     color: #495057;
     background-color: #fff;
     border: 1px solid #d2d6da!important;
     outline: 0;
     box-shadow: none!important;
-}
+} */
 
 textarea {
     resize: none;
