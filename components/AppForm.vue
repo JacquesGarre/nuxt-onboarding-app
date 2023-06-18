@@ -26,7 +26,7 @@
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary mt-3" v-show="showSubmit" @click="submitForm">{{ $t('saveChangesBtn') }}</button>
+        <button type="submit" class="btn bg-gradient-dark mb-0 mt-3" v-show="showSubmit" @click="submitForm">{{ $t('saveChangesBtn') }}</button>
     </form>
 </template>
 <script>
@@ -35,6 +35,9 @@ import { useI18n } from "vue-i18n";
 import { useVuelidate } from '@vuelidate/core'
 import { required, minLength, helpers } from '@vuelidate/validators'
 import { useForm } from "~/composables/useForm";
+
+
+
 
 export default {
     props: ['id', 'model', 'action'],
@@ -103,6 +106,7 @@ export default {
                 this.submitAction(this.model)
                 this.showSubmit = false
                 this.v$.$reset()
+                emit('confirm')
             }
         }
     }

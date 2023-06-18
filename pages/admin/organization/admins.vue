@@ -4,7 +4,12 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <h6>{{ $t('organizationAdminsTableTitle')}}</h6>
+                        <h6>{{ $t('organizationAdminsTableTitle')}}
+                            <a class="btn bg-gradient-dark mb-0 float-end" href="javascript:;" @click="addAdminModal()">
+                                {{ $t('addBtn') }}
+                            </a>
+                        </h6>
+
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
@@ -45,8 +50,8 @@
                                         </td>
                                         <td class="align-middle">
                                             <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
-                                                data-toggle="tooltip" data-original-title="Edit user" @click="openEditModal(admin)">
-                                                {{ $t('editBtn') }}
+                                                data-toggle="tooltip" data-original-title="Remove admin" @click="removeAdminModal(admin)">
+                                                {{ $t('removeAdminBtn') }}
                                             </a>
                                         </td>
                                     </tr>
@@ -64,29 +69,41 @@
     import { useModal } from 'vue-final-modal'
     import { useI18n } from "vue-i18n";
     import AppModalConfirm from '~/components/AppModalConfirm.vue'
+    import AppForm from '~/components/AppForm.vue'
 
     const { organization, updateOrganizationData } = useOrganization()
     const i18n = useI18n()
     const admins = organization.admins
 
-
-
-    const openEditModal = (admin) => {
-
-
+    const removeAdminModal = (admin) => {
         const { open, close } = useModal({
             component: AppModalConfirm,
             attrs: {
-                title: i18n.t('editAdminModalTitle', {adminName : admin.firstname + ' ' + admin.lastname}),
+                title: i18n.t('removeAdminModalTitle', {adminName : admin.firstname + ' ' + admin.lastname}),
                 onConfirm() {
                     close()
                 },
             },
             slots: {
-                default: '<p>Edit</p>',
+                default: `<p>` + i18n.t('confirmAdminRemoval', {adminName : admin.firstname + ' ' + admin.lastname}) + `</p>`
             },
         })
+        open()
+    }
 
+    const addAdminModal = () => {
+        const { open, close } = useModal({
+            component: AppModalConfirm,
+            attrs: {
+                title: i18n.t('addAdminModal', {organizationName : organization.name}),
+                onConfirm() {
+                    close()
+                },
+            },
+            slots: {
+                default: `<p>testttt</p>`
+            },
+        })
         open()
     }
 

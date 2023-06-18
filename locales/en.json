@@ -26,14 +26,20 @@
     "organizationInformationPostalCodeInputPlaceholder": "",
     "organizationInformationCountryInputLabel": "Country",
     "organizationInformationCountryInputPlaceholder": "",
+    "addBtn": "Add",
     "submitBtn": "Submit",
+    "confirmBtn": "Confirm",
     "saveChangesBtn": "Save changes",
     "editBtn": "Edit",
+    "cancelBtn": "Cancel",
+    "removeAdminBtn": "Remove from admins",
     "fieldRequiredError": "{fieldLabel} is required",
     "minLengthError": "{fieldLabel} must be at least {length} characters long",
     "organizationAdminsTableTitle": "Administrators",
     "organizationAdminsTableNameColumn": "Name",
     "organizationAdminsTableRolesColumn": "Roles",
     "organizationAdminsTableJoinedOnColumn": "Joined On",
-    "editAdminModalTitle": "Edit {adminName}'s roles"
+    "removeAdminModalTitle": "",
+    "confirmAdminRemoval": "Are you sure you want to remove <b>{adminName}</b> from administrators of your workspace?",
+    "addAdminModal": "Add a new admin to {organizationName}"
 }

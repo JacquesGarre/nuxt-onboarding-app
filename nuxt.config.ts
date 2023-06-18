@@ -1,6 +1,7 @@
 export default defineNuxtConfig({
     devtools: { enabled: true },
     modules: ['@pinia/nuxt'],
+    components: true,
     devServerHandlers: [],
     css: [
         'vue-final-modal/style.css',
