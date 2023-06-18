@@ -40,12 +40,12 @@ import { useForm } from "~/composables/useForm";
 
 
 export default {
-    props: ['id', 'model', 'action'],
+    props: ['id', 'values', 'action'],
     setup(props) {
         const i18n = useI18n()
         return {
             v$: useVuelidate(),
-            data: props.model, 
+            data: props.values, 
             form: useForm(props.id),
             showSubmit: false,
             i18n: i18n,

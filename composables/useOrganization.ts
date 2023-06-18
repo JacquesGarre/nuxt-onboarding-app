@@ -6,5 +6,16 @@ export const useOrganization = () => {
     const updateOrganizationData = (data: any) => {
         organizationStore.updateOrganizationData(data)
     };
-    return { organization, updateOrganizationData }
+    const removeAdmin = (id: any) => {
+        organizationStore.removeAdmin(id)
+    };
+    const addAdmin = (id: any) => {
+        organizationStore.addAdmin(id)
+    };
+    return { 
+        organization, 
+        updateOrganizationData, 
+        removeAdmin,
+        addAdmin 
+    }
 }

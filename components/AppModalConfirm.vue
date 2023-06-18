@@ -16,13 +16,12 @@
             <div class="card-body">
                 <slot />
             </div>
-            <a class="btn bg-gradient-danger mb-0 me-2" href="javascript:;" @click="emit('confirm')">
+            <a class="btn bg-gradient-danger mb-0 me-2" href="javascript:;" @click="close()">
                 {{ $t('cancelBtn') }}
             </a>
             <a class="btn bg-gradient-dark mb-0" href="javascript:;" @click="emit('confirm')">
                 {{ $t('confirmBtn') }}
             </a>
-
         </div>
     </VueFinalModal>
 </template>

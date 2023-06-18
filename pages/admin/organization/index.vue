@@ -7,7 +7,7 @@
                         <h6 class="mb-0">Information</h6>
                     </div>
                     <div class="card-body pt-4">
-                        <AppForm id="organizationEditionForm" :model="organization" :action="updateOrganizationData"/>
+                        <AppForm id="organizationEditionForm" :values="organization" :action="updateOrganizationData"/>
                     </div>
                 </div>
             </div>

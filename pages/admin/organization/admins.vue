@@ -9,7 +9,6 @@
                                 {{ $t('addBtn') }}
                             </a>
                         </h6>
-
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
@@ -28,7 +27,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="admin in admins">
+                                    <tr v-for="admin in organization.users.filter((user) => user.isAdmin == 1)">
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div>
@@ -69,11 +68,9 @@
     import { useModal } from 'vue-final-modal'
     import { useI18n } from "vue-i18n";
     import AppModalConfirm from '~/components/AppModalConfirm.vue'
-    import AppForm from '~/components/AppForm.vue'
 
-    const { organization, updateOrganizationData } = useOrganization()
+    const { organization, updateOrganizationData, removeAdmin } = useOrganization()
     const i18n = useI18n()
-    const admins = organization.admins
 
     const removeAdminModal = (admin) => {
         const { open, close } = useModal({
@@ -81,6 +78,7 @@
             attrs: {
                 title: i18n.t('removeAdminModalTitle', {adminName : admin.firstname + ' ' + admin.lastname}),
                 onConfirm() {
+                    removeAdmin(admin.id),
                     close()
                 },
             },
@@ -97,6 +95,7 @@
             attrs: {
                 title: i18n.t('addAdminModal', {organizationName : organization.name}),
                 onConfirm() {
+                    //addAdmin(admin.id),
                     close()
                 },
             },

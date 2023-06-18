@@ -10,21 +10,25 @@ export const useOrganizationStore = defineStore('organization', {
             postalCode: '75001',
             city: 'Paris',
             country: 'France',
-            admins: [
+            users: [
                 {
+                    id:1,
                     picture: '/assets/img/team-2.jpg',
                     firstname: 'John',
                     lastname: 'Michael',
                     email: 'yoyoyo@gmail.com',
-                    roles: ['Developer', 'IT', 'Admin'],
+                    isAdmin:0,
+                    roles: ['Developer', 'IT'],
                     joinedOn: '18/05/2022'
                 },
                 {
+                    id:2,
                     picture: '/assets/img/team-3.jpg',
                     firstname: 'Bobby',
                     lastname: 'La pointe',
                     email: 'yascascascyo@gmail.com',
-                    roles: ['Manager', 'HR', 'Admin'],
+                    isAdmin:1,
+                    roles: ['Manager', 'HR'],
                     joinedOn: '23/04/2022'
                 }
             ]
@@ -40,6 +44,15 @@ export const useOrganizationStore = defineStore('organization', {
             this.organization.postalCode = data.postalCode;
             this.organization.country = data.country;
         },
+        removeAdmin(id) {
+            const user = this.organization.users.find(user => user.id == id);
+            user.isAdmin = 0;
+            console.log(this.organization.users)
+        },
+        addAdmin(id) {
+            const user = this.organization.users.find(user => user.id == id);
+            user.isAdmin = 1;
+        }
     },
     
 });
