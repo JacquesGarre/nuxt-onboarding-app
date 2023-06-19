@@ -24,20 +24,20 @@ export const useMenu = () => {
         },
         {
             type: 'button',
-            label: 'peopleLabel',
-            url: '/admin/people',
-            icon: 'users',
-            iconPrefix: 'fa-solid',
-            description: 'peopleDescription',
-            tabs: []
-        },
-        {
-            type: 'button',
             label: 'rolesLabel',
             url: '/admin/roles',
             iconPrefix: 'fa-solid',
             icon: 'address-card',
             description: 'rolesDescription',
+            tabs: []
+        },
+        {
+            type: 'button',
+            label: 'peopleLabel',
+            url: '/admin/people',
+            icon: 'users',
+            iconPrefix: 'fa-solid',
+            description: 'peopleDescription',
             tabs: []
         },
         {

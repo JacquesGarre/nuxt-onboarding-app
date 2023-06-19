@@ -47,7 +47,6 @@ export const useOrganizationStore = defineStore('organization', {
         removeAdmin(id) {
             const user = this.organization.users.find(user => user.id == id);
             user.isAdmin = 0;
-            console.log(this.organization.users)
         },
         addAdmin(data) {
             const user = this.organization.users.find(user => user.id == data.user);
