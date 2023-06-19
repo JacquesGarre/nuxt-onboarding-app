@@ -44,7 +44,7 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 
 ## Hours of development
 
--- LOGIN / SIGNUP / LAYOUT / MENU / ORGANIZATION (TOTAL 26h) --
+### LOGIN / SIGNUP / LAYOUT / MENU / ORGANIZATION (TOTAL 26h)
 
 13/06/23 : 3h
 
@@ -58,6 +58,6 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 
 18/06/23 : 7h
 
--- ROLES --
+### ROLES 
 
 19/06/23 : 3h30
