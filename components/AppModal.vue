@@ -1,15 +1,11 @@
 <script setup>
-    import { VueFinalModal } from 'vue-final-modal'
+import { VueFinalModal } from 'vue-final-modal'
 
-
-    const props = defineProps({
-        title: String,
-        noBtns: Boolean
-    })
-    const emit = defineEmits({
-        e: 'confirm',
-        e: 'update:modelValue'
-    })
+const props = defineProps({
+    title: String,
+    noBtns: Boolean
+})
+const emit = defineEmits(['confirm', 'update:modelValue'])
 
 </script>
 <template>
@@ -19,7 +15,8 @@
             <div class="card-body">
                 <slot />
             </div>
-            <a class="btn bg-gradient-danger mb-0 me-2" href="javascript:;" @click="emit('update:modelValue', false)" v-if="noBtns !== true">
+            <a class="btn bg-gradient-danger mb-0 me-2" href="javascript:;" @click="emit('update:modelValue', false)"
+                v-if="noBtns !== true">
                 {{ $t('cancelBtn') }}
             </a>
             <a class="btn bg-gradient-dark mb-0" href="javascript:;" @click="emit('confirm')" v-if="noBtns !== true">

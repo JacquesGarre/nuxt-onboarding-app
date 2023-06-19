@@ -5,7 +5,12 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <h6>{{ $t('organizationAdminsTableTitle')}}
-                            <a class="btn bg-gradient-dark mb-0 float-end" href="javascript:;" @click="addAdminModal()">
+                            <a 
+                                class="btn bg-gradient-dark mb-0 float-end" 
+                                href="javascript:;"
+                                @click="addAdminModal()"
+                                v-if="organization.users.filter((user) => user.isAdmin == 0).length > 0"
+                                >
                                 {{ $t('addBtn') }}
                             </a>
                         </h6>
@@ -68,8 +73,8 @@
     import { useModal } from 'vue-final-modal'
     import { useI18n } from "vue-i18n";
     import AppModal from '~/components/AppModal.vue'
-
     import AppForm from '~/components/AppForm.vue'
+    import { ref } from 'vue';
 
     const { organization, updateOrganizationData, removeAdmin, addAdmin } = useOrganization()
     const i18n = useI18n()
@@ -92,12 +97,15 @@
     }
 
     const addAdminModal = () => {
+
+        const closeModal = ref(null);
+
         const { open, close } = useModal({
             component: AppModal,
             attrs: {
                 title: i18n.t('addAdminModal', {organizationName : organization.name}),
                 onConfirm() {
-                    close()
+                    closeModal.value();
                 },
                 noBtns: true
             },
@@ -108,10 +116,14 @@
                         id: "administratorAddForm", 
                         action: addAdmin,
                         inModal: true,
+                        closeModal: closeModal,
                     },
                 }
             },
         })
+
+        closeModal.value = close;
+
         open()
     }
 

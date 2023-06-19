@@ -1,11 +1,16 @@
 {
     "fields": {
         "user": {
-            "type": "text",
+            "type": "select",
             "id": "user",
             "class": "col-12",
             "label": "administratorAddUserInputLabel",
-            "placeholder": "administratorAddUserInputPlaceholder"
+            "placeholder": "administratorAddUserInputPlaceholder",
+            "list": "nonAdminUsers",
+            "listPattern": {
+                "value": "id",
+                "label": ["firstname", "lastname"]
+            }
         }
     },
     "display": [

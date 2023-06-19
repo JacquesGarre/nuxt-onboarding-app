@@ -50,10 +50,8 @@ export const useOrganizationStore = defineStore('organization', {
             console.log(this.organization.users)
         },
         addAdmin(data) {
-            alert('admin adding, chcekc onsole')
-            console.log(data);
-            // const user = this.organization.users.find(user => user.id == id);
-            // user.isAdmin = 1;
+            const user = this.organization.users.find(user => user.id == data.user);
+            user.isAdmin = 1;
         }
     },
     

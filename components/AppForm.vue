@@ -1,8 +1,10 @@
 <template>
     <form @submit.prevent="">
         <div class="row form-row" v-for="row in form.formSettings.display">
-            <div class="form-group align-content-start" v-for="fieldID in row" :class="form.formSettings.fields[fieldID].class">
-                <label :for="form.formSettings.fields[fieldID].id">{{ $t(form.formSettings.fields[fieldID].label) }}</label>
+            <div class="form-group align-content-start align-content-start flex-column align-items-start" v-for="fieldID in row" :class="form.formSettings.fields[fieldID].class">
+
+                <label :for="form.formSettings.fields[fieldID].id" class="float-start">{{ $t(form.formSettings.fields[fieldID].label) }}</label>
+
                 <input v-if="form.formSettings.fields[fieldID].type == 'text'" 
                     type="text" 
                     class="form-control mb-1" 
@@ -21,6 +23,21 @@
                     :placeholder="$t(form.formSettings.fields[fieldID].placeholder)"
                     :class="{ 'is-invalid': v$.model[fieldID].$errors.length, 'hasbeenfocused':v$.model[fieldID].$dirty }"
                 ></textarea>
+
+                <select v-if="form.formSettings.fields[fieldID].type == 'select'" 
+                    class="form-control mb-1" 
+                    :id="form.formSettings.fields[fieldID].id"
+                    @keydown="showSubmit = true" 
+                    v-model="model[fieldID]"
+                    :placeholder="$t(form.formSettings.fields[fieldID].placeholder)"
+                    :class="{ 'is-invalid': v$.model[fieldID].$errors.length, 'hasbeenfocused':v$.model[fieldID].$dirty }"
+                >
+                    <option v-for="(item, index) in lists[form.formSettings.fields[fieldID].list]"
+                        :value="item[form.formSettings.fields[fieldID].listPattern.value]" :selected="index == 0 ? 'selected' : false">
+                        {{ form.formSettings.fields[fieldID].listPattern.label.map(field => item[field]).join(' ')}} 
+                    </option>
+                </select>
+
                 <div class="invalid-feedback" v-for="error of v$.model[fieldID].$errors" :key="error.$uid">
                     {{ error.$message }}
                 </div>
@@ -35,26 +52,26 @@ import { useI18n } from "vue-i18n";
 import { useVuelidate } from '@vuelidate/core'
 import { required, minLength, helpers } from '@vuelidate/validators'
 import { useForm } from "~/composables/useForm";
-
-
-
+import { useOrganization } from "~/composables/useOrganization"
 
 export default {
-    props: ['id', 'values', 'action', 'inModal'],
+    props: ['id', 'values', 'action', 'inModal', 'closeModal'],
     setup(props) {
         const i18n = useI18n()
         const form = useForm(props.id)
         const settings = JSON.parse(JSON.stringify(form))
-
-        console.log(props.action)
-
         return {
             v$: useVuelidate(),
             data: props.values ?? {}, 
             form: form,
             showSubmit: !settings.formSettings.btn.hideWhenUntouched,
             i18n: i18n,
-            submitAction: props.action
+            submitAction: props.action,
+            lists: {
+                users: useOrganization().organization.users,
+                admins: useOrganization().organization.users.filter((user) => user.isAdmin == 1),
+                nonAdminUsers: useOrganization().organization.users.filter((user) => user.isAdmin == 0)
+            }
         }
     },
     data() {
@@ -106,14 +123,16 @@ export default {
     },
     methods: {
         async submitForm () {
-            emit('update:modelValue', false)
-
+           
             const isFormCorrect = await this.v$.$validate()
             if (isFormCorrect) {
                 this.submitAction(this.model)
                 this.showSubmit = false
                 this.v$.$reset()
-                
+               
+                if(this.inModal){
+                    this.closeModal();
+                }
             }
         }
     }
