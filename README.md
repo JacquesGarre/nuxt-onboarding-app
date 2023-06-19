@@ -55,3 +55,5 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 17/06/23 : 7h
 
 18/06/23 : 7h
+
+19/06/23 : 30mins
