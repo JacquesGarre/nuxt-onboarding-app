@@ -68,5 +68,6 @@
     "roleClassInputPlaceholder": "Color of the role",
     "dangerClassLabel": "Red",
     "successClassLabel": "Green",
-    "primaryClassLabel": "Purple"
+    "primaryClassLabel": "Purple",
+    "admin":"Admin"
 }

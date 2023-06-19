@@ -39,7 +39,7 @@
                                 <tbody>
                                     <tr v-for="role in useRoleStore().roles">
                                         <td class="text-center">
-                                            <span class="badge bg-primary" :class="'bg-' + role.class">{{ role.name }}</span>
+                                            <span class="badge rounded-pill bg-primary" :class="'bg-' + role.class">{{ role.name }}</span>
                                         </td>
                                         <td>
                                             <div class="form-check form-switch ps-0" v-for="boolean, right in role.rights.organization">

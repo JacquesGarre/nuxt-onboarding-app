@@ -45,9 +45,12 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <p class="text-xs font-weight-bold mb-0">
-                                                {{ admin.roles.join(', ') }}
-                                            </p>
+                                            <span class="badge rounded-pill me-1 bg-white text-danger border border-danger">
+                                                {{ $t('admin') }}
+                                            </span>      
+                                            <span class="badge rounded-pill me-1" :class="'bg-' + useRoleStore().roles.find((role) => role.id == roleID).class" v-for="roleID in admin.roles">
+                                                {{ useRoleStore().roles.find((role) => role.id == roleID).name }}
+                                            </span>                                           
                                         </td>
                                         <td class="align-middle text-center">
                                             <span class="text-secondary text-xs font-weight-bold">{{ admin.joinedOn }}</span>
@@ -75,6 +78,7 @@
     import AppModal from '~/components/AppModal.vue'
     import AppForm from '~/components/AppForm.vue'
     import { ref } from 'vue';
+    import { useRoleStore } from '~/store/roles'
 
     const { organization, updateOrganizationData, removeAdmin, addAdmin } = useOrganization()
     const i18n = useI18n()

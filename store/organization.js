@@ -17,8 +17,8 @@ export const useOrganizationStore = defineStore('organization', {
                     firstname: 'John',
                     lastname: 'Michael',
                     email: 'yoyoyo@gmail.com',
-                    isAdmin:0,
-                    roles: ['Developer', 'IT'],
+                    isAdmin:1,
+                    roles: [1, 2],
                     joinedOn: '18/05/2022'
                 },
                 {
@@ -28,7 +28,17 @@ export const useOrganizationStore = defineStore('organization', {
                     lastname: 'La pointe',
                     email: 'yascascascyo@gmail.com',
                     isAdmin:1,
-                    roles: ['Manager', 'HR'],
+                    roles: [1],
+                    joinedOn: '23/04/2022'
+                },
+                {
+                    id:3,
+                    picture: '/assets/img/team-1.jpg',
+                    firstname: 'Roberto',
+                    lastname: 'Iglesios',
+                    email: 'asdasdasco@gmail.com',
+                    isAdmin:1,
+                    roles: [2],
                     joinedOn: '23/04/2022'
                 }
             ]
