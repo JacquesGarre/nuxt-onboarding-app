@@ -60,4 +60,4 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 
 ### ROLES 
 
-19/06/23 : 3h30
+19/06/23 : 4h
