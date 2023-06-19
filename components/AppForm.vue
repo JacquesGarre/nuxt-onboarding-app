@@ -33,8 +33,12 @@
                     :class="{ 'is-invalid': v$.model[fieldID].$errors.length, 'hasbeenfocused':v$.model[fieldID].$dirty }"
                 >
                     <option v-for="(item, index) in lists[form.formSettings.fields[fieldID].list]"
-                        :value="item[form.formSettings.fields[fieldID].listPattern.value]" :selected="index == 0 ? 'selected' : false">
+                        :value="item[form.formSettings.fields[fieldID].listPattern.value]" :selected="index == 0 ? 'selected' : false" v-if="form.formSettings.fields[fieldID].listType == 'dynamic'">
                         {{ form.formSettings.fields[fieldID].listPattern.label.map(field => item[field]).join(' ')}} 
+                    </option>
+                    <option v-for="(item, index) in lists[form.formSettings.fields[fieldID].list]"
+                        :value="item[form.formSettings.fields[fieldID].listPattern.value]" :selected="index == 0 ? 'selected' : false" v-if="form.formSettings.fields[fieldID].listType == 'static'">
+                        {{ $t( item[form.formSettings.fields[fieldID].listPattern.label] ) }} 
                     </option>
                 </select>
 
@@ -53,6 +57,7 @@ import { useVuelidate } from '@vuelidate/core'
 import { required, minLength, helpers } from '@vuelidate/validators'
 import { useForm } from "~/composables/useForm";
 import { useOrganization } from "~/composables/useOrganization"
+import classes from '../data/classes.json'
 
 export default {
     props: ['id', 'values', 'action', 'inModal', 'closeModal'],
@@ -70,7 +75,8 @@ export default {
             lists: {
                 users: useOrganization().organization.users,
                 admins: useOrganization().organization.users.filter((user) => user.isAdmin == 1),
-                nonAdminUsers: useOrganization().organization.users.filter((user) => user.isAdmin == 0)
+                nonAdminUsers: useOrganization().organization.users.filter((user) => user.isAdmin == 0),
+                classes: classes
             }
         }
     },

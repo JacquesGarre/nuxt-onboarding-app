@@ -10,7 +10,8 @@
             "listPattern": {
                 "value": "id",
                 "label": ["firstname", "lastname"]
-            }
+            },
+            "listType": "dynamic"
         }
     },
     "display": [

@@ -84,6 +84,10 @@
                                             </div>
                                         </td>
                                         <td class="align-middle">
+                                            <a href="javascript:;" class="text-secondary font-weight-bold text-xs me-2"
+                                                data-toggle="tooltip" data-original-title="Edit role" @click="editRoleModal(role)">
+                                                {{ $t('editBtn') }}
+                                            </a>
                                             <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
                                                 data-toggle="tooltip" data-original-title="Remove role" @click="removeRoleModal(role)">
                                                 {{ $t('deleteBtn') }}
@@ -104,7 +108,10 @@
     import { useI18n } from "vue-i18n";
     import { useModal } from 'vue-final-modal'
     import AppModal from '~/components/AppModal.vue'
+    import AppForm from '~/components/AppForm.vue'
     import { useRoleStore } from '~/store/roles'
+
+    const { roles, updateRoleData, removeRole } = useRoleStore()
 
     const i18n = useI18n()
 
@@ -122,6 +129,38 @@
                 default: `<p>` + i18n.t('confirmRoleRemoval', {role : role.name}) + `</p>`
             },
         })
+        open()
+    }
+
+    const editRoleModal = (role) => {
+
+        const closeModal = ref(null);
+
+        const { open, close } = useModal({
+            component: AppModal,
+            attrs: {
+                title: i18n.t('editRoleModalTitle', {role : role.name}),
+                onConfirm() {
+                    close()
+                },
+                noBtns: true
+            },
+            slots: {
+                default: {
+                    component: AppForm,
+                    attrs: {
+                        id: "roleAddForm", 
+                        action: updateRoleData,
+                        inModal: true,
+                        closeModal: closeModal,
+                        values: role
+                    },
+                }
+            },
+        })
+
+        closeModal.value = close;
+
         open()
     }
 

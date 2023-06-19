@@ -60,5 +60,13 @@
     "update": "Update",
     "delete": "Delete",
     "removeRoleModalTitle": "",
-    "confirmRoleRemoval": "Are you sure you want to remove the role <b>{role}</b>?"
+    "confirmRoleRemoval": "Are you sure you want to remove the role <b>{role}</b>?",
+    "editRoleModalTitle": "Edit {role} role",
+    "roleNameInputLabel": "Name",
+    "roleNameInputPlaceholder":"Enter the name of the role",
+    "roleClassInputLabel": "Color",
+    "roleClassInputPlaceholder": "Color of the role",
+    "dangerClassLabel": "Red",
+    "successClassLabel": "Green",
+    "primaryClassLabel": "Purple"
 }

@@ -1,0 +1,14 @@
+[
+    {
+        "id":"danger",
+        "label":"dangerClassLabel"
+    },
+    {
+        "id":"success",
+        "label":"successClassLabel"
+    },
+    {
+        "id":"primary",
+        "label":"primaryClassLabel"
+    }
+]

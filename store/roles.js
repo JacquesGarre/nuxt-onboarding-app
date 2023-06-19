@@ -107,8 +107,9 @@ export const useRoleStore = defineStore('role', {
 
     actions: {
         updateRoleData(data) {
-            alert('UPDATE ROLE, CHECK CONSOLE');
-            console.log(data);
+            const role = this.roles.find(role => role.id == data.id);
+            role.name = data.name;
+            role.class = data.class;
         },
         removeRole(data) {
             this.roles = this.roles.filter(role => role.id != data.id);

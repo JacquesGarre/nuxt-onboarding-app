@@ -1,0 +1,40 @@
+{
+    "fields": {
+        "name": {
+            "type": "text",
+            "id": "name",
+            "class": "col-12",
+            "label": "roleNameInputLabel",
+            "placeholder": "roleNameInputPlaceholder"
+        },
+        "class": {
+            "type": "select",
+            "id": "class",
+            "class": "col-12",
+            "label": "roleClassInputLabel",
+            "placeholder": "roleClassInputPlaceholder",
+            "list": "classes",
+            "listPattern": {
+                "value": "id",
+                "label": "label"
+            },
+            "listType": "static"
+        }
+    },
+    "display": [
+        ["name"],
+        ["class"]
+    ],
+    "validations": {
+        "name": {
+            "required": true
+        },
+        "class": {
+            "required": true
+        }
+    },
+    "btn": {
+        "label": "saveChangesBtn",
+        "hideWhenUntouched": false
+    }
+}
