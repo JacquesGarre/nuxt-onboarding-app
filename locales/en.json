@@ -41,5 +41,7 @@
     "organizationAdminsTableJoinedOnColumn": "Joined On",
     "removeAdminModalTitle": "",
     "confirmAdminRemoval": "Are you sure you want to remove <b>{adminName}</b> from your workspace administrators?",
-    "addAdminModal": "Add an administrator to your workspace"
+    "addAdminModal": "Add an administrator to your workspace",
+    "administratorAddUserInputLabel":"User",
+    "administratorAddUserInputPlaceholder":"Select a user to be admin"
 }

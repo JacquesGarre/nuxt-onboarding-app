@@ -3,7 +3,8 @@
 
 
     const props = defineProps({
-        title: String
+        title: String,
+        noBtns: Boolean
     })
     const emit = defineEmits({
         e: 'confirm',
@@ -18,10 +19,10 @@
             <div class="card-body">
                 <slot />
             </div>
-            <a class="btn bg-gradient-danger mb-0 me-2" href="javascript:;" @click="emit('update:modelValue', false)">
+            <a class="btn bg-gradient-danger mb-0 me-2" href="javascript:;" @click="emit('update:modelValue', false)" v-if="noBtns !== true">
                 {{ $t('cancelBtn') }}
             </a>
-            <a class="btn bg-gradient-dark mb-0" href="javascript:;" @click="emit('confirm')">
+            <a class="btn bg-gradient-dark mb-0" href="javascript:;" @click="emit('confirm')" v-if="noBtns !== true">
                 {{ $t('confirmBtn') }}
             </a>
         </div>

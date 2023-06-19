@@ -26,7 +26,7 @@
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn bg-gradient-dark mb-0 mt-3" v-show="showSubmit" @click="submitForm">{{ $t('saveChangesBtn') }}</button>
+        <button type="submit" class="btn bg-gradient-dark mb-0 mt-3" v-show="showSubmit" @click="submitForm">{{ $t(form.formSettings.btn.label) }}</button>
     </form>
 </template>
 <script>
@@ -40,14 +40,19 @@ import { useForm } from "~/composables/useForm";
 
 
 export default {
-    props: ['id', 'values', 'action'],
+    props: ['id', 'values', 'action', 'inModal'],
     setup(props) {
         const i18n = useI18n()
+        const form = useForm(props.id)
+        const settings = JSON.parse(JSON.stringify(form))
+
+        console.log(props.action)
+
         return {
             v$: useVuelidate(),
-            data: props.values, 
-            form: useForm(props.id),
-            showSubmit: false,
+            data: props.values ?? {}, 
+            form: form,
+            showSubmit: !settings.formSettings.btn.hideWhenUntouched,
             i18n: i18n,
             submitAction: props.action
         }
@@ -101,12 +106,14 @@ export default {
     },
     methods: {
         async submitForm () {
+            emit('update:modelValue', false)
+
             const isFormCorrect = await this.v$.$validate()
             if (isFormCorrect) {
                 this.submitAction(this.model)
                 this.showSubmit = false
                 this.v$.$reset()
-                emit('confirm')
+                
             }
         }
     }

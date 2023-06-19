@@ -9,8 +9,8 @@ export const useOrganization = () => {
     const removeAdmin = (id: any) => {
         organizationStore.removeAdmin(id)
     };
-    const addAdmin = (id: any) => {
-        organizationStore.addAdmin(id)
+    const addAdmin = (data: any) => {
+        organizationStore.addAdmin(data)
     };
     return { 
         organization, 

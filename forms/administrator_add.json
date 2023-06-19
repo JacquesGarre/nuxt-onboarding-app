@@ -1,0 +1,23 @@
+{
+    "fields": {
+        "user": {
+            "type": "text",
+            "id": "user",
+            "class": "col-12",
+            "label": "administratorAddUserInputLabel",
+            "placeholder": "administratorAddUserInputPlaceholder"
+        }
+    },
+    "display": [
+        ["user"]
+    ],
+    "validations": {
+        "user": {
+            "required": true
+        }
+    },
+    "btn": {
+        "label": "confirmBtn",
+        "hideWhenUntouched": false
+    }
+}

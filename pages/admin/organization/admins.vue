@@ -67,14 +67,16 @@
 
     import { useModal } from 'vue-final-modal'
     import { useI18n } from "vue-i18n";
-    import AppModalConfirm from '~/components/AppModalConfirm.vue'
+    import AppModal from '~/components/AppModal.vue'
 
-    const { organization, updateOrganizationData, removeAdmin } = useOrganization()
+    import AppForm from '~/components/AppForm.vue'
+
+    const { organization, updateOrganizationData, removeAdmin, addAdmin } = useOrganization()
     const i18n = useI18n()
 
     const removeAdminModal = (admin) => {
         const { open, close } = useModal({
-            component: AppModalConfirm,
+            component: AppModal,
             attrs: {
                 title: i18n.t('removeAdminModalTitle', {adminName : admin.firstname + ' ' + admin.lastname}),
                 onConfirm() {
@@ -91,16 +93,23 @@
 
     const addAdminModal = () => {
         const { open, close } = useModal({
-            component: AppModalConfirm,
+            component: AppModal,
             attrs: {
                 title: i18n.t('addAdminModal', {organizationName : organization.name}),
                 onConfirm() {
-                    //addAdmin(admin.id),
                     close()
                 },
+                noBtns: true
             },
             slots: {
-                default: `<p>testttt</p>`
+                default: {
+                    component: AppForm,
+                    attrs: {
+                        id: "administratorAddForm", 
+                        action: addAdmin,
+                        inModal: true,
+                    },
+                }
             },
         })
         open()
