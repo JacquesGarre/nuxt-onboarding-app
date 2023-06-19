@@ -56,7 +56,9 @@
                                             <span class="text-secondary text-xs font-weight-bold">{{ admin.joinedOn }}</span>
                                         </td>
                                         <td class="align-middle">
-                                            <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
+                                            <a 
+                                            v-if="organization.users.filter((user) => user.isAdmin == 1).length > 1"
+                                            href="javascript:;" class="text-secondary font-weight-bold text-xs"
                                                 data-toggle="tooltip" data-original-title="Remove admin" @click="removeAdminModal(admin)">
                                                 {{ $t('removeAdminBtn') }}
                                             </a>
