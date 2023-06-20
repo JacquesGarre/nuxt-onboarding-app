@@ -1,6 +1,15 @@
 export default defineNuxtConfig({
     devtools: { enabled: true },
-    modules: ['@pinia/nuxt'],
+    modules: [
+        '@pinia/nuxt',
+        'nuxt-mongoose',
+        '@nuxtjs/axios'
+    ],
+    mongoose: {
+        uri: process.env.MONGODB_URI,
+        options: {},
+        modelsDir: 'models',
+    },
     components: true,
     devServerHandlers: [],
     css: [
