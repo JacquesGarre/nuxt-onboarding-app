@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <form role="form text-left" @submit.prevent="submitForm">
         <div class="mb-3">
             <input type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="email-addon"
@@ -48,4 +48,11 @@ export default {
         }
     },
 };
+</script> -->
+<script setup>
+    const { data } = await useFetch('/api/users')
 </script>
+
+<template>
+  <pre>{{ data }}</pre>
+</template>
