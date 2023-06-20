@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
     <form role="form text-left" @submit.prevent="submitForm">
         <div class="mb-3">
             <input type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="email-addon"
@@ -19,7 +19,7 @@
             </label>
         </div>
         <div class="text-center">
-            <button type="button" class="btn bg-gradient-dark w-100 my-4 mb-2" @click="submitForm">Sign up</button>
+            <button type="button" class="btn bg-gradient-dark w-100 my-4 mb-2" @click="registerUser">Sign up</button>
         </div>
     </form>
 </template>
@@ -36,8 +36,15 @@ export default {
         };
     },
     methods: {
-        async submitForm() {
-            let res = await this.$axios.post('/api/users/new', this.form)
+        async registerUser() {
+
+            let res = await $fetch( '/api/users', {
+                method: 'POST',
+                body: this.form
+            });
+
+            console.log(res);
+
             if (res.status == 201 || res.status == 200) {
                 alert('created');
             } else {
@@ -48,11 +55,4 @@ export default {
         }
     },
 };
-</script> -->
-<script setup>
-    const { data } = await useFetch('/api/users')
 </script>
-
-<template>
-  <pre>{{ data }}</pre>
-</template>

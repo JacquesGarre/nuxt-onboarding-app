@@ -34,5 +34,4 @@
 <script setup>
 import AppRegistrationForm from '~/components/AppRegistrationForm.vue';
 
-
 </script>

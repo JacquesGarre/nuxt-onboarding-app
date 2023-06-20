@@ -7,9 +7,9 @@
 git clone
 ```
 
-Add a .env.development file in onboarding-app/ folder
+Add a .env.development file in onboarding-app/ folder :
 
-Fill in MONGODB_URI=mongodb://localhost:27017/onboarding-app
+MONGODB_URI="mongodb://127.0.0.1:27017/onboarding-app?authSource=admin"
 
 Make sure to install the dependencies:
 

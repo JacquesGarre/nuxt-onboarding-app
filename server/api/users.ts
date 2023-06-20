@@ -1,14 +1,14 @@
 export default defineEventHandler((event) => {
 
+    
+
     switch(event.node.req.method){
         case 'GET':
             return {
                 hello: 'get'
             }
         case 'POST':
-            return {
-                hello: 'post'
-            }
+            return event.node.req;
     }
     
 })
