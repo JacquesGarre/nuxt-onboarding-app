@@ -1,0 +1,171 @@
+<!-- Menu -->
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+    <div class="app-brand demo">
+        <a href="{{ path('app_admin') }}" class="app-brand-link">
+            <span class="app-brand-text demo menu-text fw-bolder ms-2">Fog Api</span>
+        </a>
+        <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+            <i class="bx bx-chevron-left bx-sm align-middle"></i>
+        </a>
+    </div>
+
+    <div class="menu-inner-shadow"></div>
+    <ul class="menu-inner py-1">
+
+        <li class="menu-item {{ app.request.pathinfo == path('app_admin') ? 'active' : '' }}">
+            <a href="{{ path('app_admin') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Dashboard</div>
+            </a>
+        </li>
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Administration</span>
+        </li>
+        <li class="menu-item {{ path('app_mobile_app_settings_index') in app.request.pathinfo ? 'active' : '' }}">
+            <a href="{{ path('app_mobile_app_settings_index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-cog"></i>
+                <div data-i18n="Basic">Settings</div>
+            </a>
+        </li>
+        <li class="menu-item {{ path('app_api_token_index') in app.request.pathinfo ? 'active' : '' }}">
+            <a href="{{ path('app_api_token_index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-key"></i>
+                <div data-i18n="Basic">Tokens</div>
+            </a>
+        </li>
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Modules</span>
+        </li>
+        <li class="menu-item" style="">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-world"></i>
+                <div data-i18n="Awards">Geography</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ path('app_continent_index') in app.request.pathinfo ? 'active' : '' }}">
+                    <a href="{{ path('app_continent_index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-graphql"></i>
+                        <div data-i18n="Basic">Continents</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ path('app_country_index') in app.request.pathinfo ? 'active' : '' }}">
+                    <a href="{{ path('app_country_index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-graphql"></i>
+                        <div data-i18n="Basic">Countries</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ path('app_region_index') in app.request.pathinfo ? 'active' : '' }}">
+                    <a href="{{ path('app_region_index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-graphql"></i>
+                        <div data-i18n="Basic">Regions</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu-item" style="">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-book-content"></i>
+                <div data-i18n="Content">Content</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ path('app_pack_index') in app.request.pathinfo ? 'active' : '' }}">
+                    <a href="{{ path('app_pack_index') }}" class="menu-link">
+                        <i class='menu-icon tf-icons bx bx-package'></i>
+                        <div data-i18n="Basic">Packs</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ path('app_article_index') in app.request.pathinfo ? 'active' : '' }}">
+                    <a href="{{ path('app_article_index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-news"></i>
+                        <div data-i18n="Basic">Articles</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ path('app_comment_index') in app.request.pathinfo ? 'active' : '' }}">
+                    <a href="{{ path('app_comment_index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-message-dots"></i>
+                        <div data-i18n="Basic">Comments</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ path('app_like_index') in app.request.pathinfo ? 'active' : '' }}">
+                    <a href="{{ path('app_like_index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-heart"></i>
+                        <div data-i18n="Basic">Likes</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ path('app_place_index') in app.request.pathinfo ? 'active' : '' }}">
+                    <a href="{{ path('app_place_index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-location-plus"></i>
+                        <div data-i18n="Basic">Places</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="menu-item" style="">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-trophy"></i>
+                <div data-i18n="Awards">Awards</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ path('app_rank_index') in app.request.pathinfo ? 'active' : '' }}">
+                    <a href="{{ path('app_rank_index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-medal"></i>
+                        <div data-i18n="Basic">Ranks</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ path('app_category_index') in app.request.pathinfo ? 'active' : '' }}">
+                    <a href="{{ path('app_category_index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-category"></i>
+                        <div data-i18n="Basic">Categories</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ path('app_epic_index') in app.request.pathinfo ? 'active' : '' }}">
+                    <a href="{{ path('app_epic_index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-pyramid"></i>
+                        <div data-i18n="Basic">Epics</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ path('app_story_index') in app.request.pathinfo ? 'active' : '' }}">
+                    <a href="{{ path('app_story_index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-book-heart"></i>
+                        <div data-i18n="Basic">Stories</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ path('app_quest_index') in app.request.pathinfo ? 'active' : '' }}">
+                    <a href="{{ path('app_quest_index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-flag"></i>
+                        <div data-i18n="Basic">Quests</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ path('app_achievement_index') in app.request.pathinfo ? 'active' : '' }}">
+                    <a href="{{ path('app_achievement_index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-star"></i>
+                        <div data-i18n="Basic">Achievements</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Users</span>
+        </li>
+        <li class="menu-item {{ path('app_user_index') in app.request.pathinfo ? 'active' : '' }}">
+            <a href="{{ path('app_user_index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user"></i>
+                <div data-i18n="Basic">Users</div>
+            </a>
+        </li>
+        <li class="menu-item {{ path('app_subscription_index') in app.request.pathinfo ? 'active' : '' }}">
+            <a href="{{ path('app_subscription_index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-dollar-circle"></i>
+                <div data-i18n="Basic">Subscriptions</div>
+            </a>
+        </li>
+        <li class="menu-item {{ path('app_feedback_index') in app.request.pathinfo ? 'active' : '' }}">
+            <a href="{{ path('app_feedback_index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-alarm-exclamation"></i>
+                <div data-i18n="Basic">Feedbacks</div>
+            </a>
+        </li>
+    </ul>
+</aside>
+<!-- / Menu -->

@@ -1,0 +1,55 @@
+security:
+     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
+    password_hashers:
+        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+        App\Entity\User:
+            algorithm: auto
+
+    enable_authenticator_manager: true
+    providers:
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
+    firewalls:
+        api_auth:
+            pattern: ^/api/auth
+            stateless: true
+            login_throttling:
+                max_attempts: 5
+            json_login:
+                check_path: /api/auth
+                username_path: email
+                password_path: password
+                # success_handler: lexik_jwt_authentication.handler.authentication_success
+                success_handler: App\Security\Authentication\AuthenticationSuccessHandler
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+        api:
+            stateless: true
+            custom_authenticator: App\Security\ApiKeyAuthenticator
+            pattern: ^/api/
+            jwt: ~
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            lazy: true
+            provider: app_user_provider
+            logout:
+                path: app_logout
+            form_login:
+                login_path: app_login
+                check_path: app_login
+        secured_area:
+            form_login:
+                enable_csrf: true
+
+    access_control:
+        - { path: ^/admin, roles: [ROLE_ADMIN] }
+        - { path: ^/$, roles: PUBLIC_ACCESS } # Allows accessing the Swagger UI
+        - { path: ^/api$, roles: PUBLIC_ACCESS } # Allows accessing the Swagger UI docs
+        - { path: ^/api/auth, roles: PUBLIC_ACCESS }
+        - { path: ^/api/users, roles: PUBLIC_ACCESS, methods: [POST] } # still needs api key
+        - { path: ^/api/users, roles: IS_AUTHENTICATED_FULLY, methods: [GET, PUT, PATCH, DELETE] }
+

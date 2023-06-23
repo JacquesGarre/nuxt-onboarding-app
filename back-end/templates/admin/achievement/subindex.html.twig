@@ -1,0 +1,29 @@
+<div class="card my-4">
+    <h5 class="card-header">My achievements</h5>
+    <div>
+        <table class="table">
+            <thead class="table-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Unlocked at</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                {% for achievement in user_achievements %}
+                    <tr>
+                        <td>{{ achievement.name }}</td>
+                        <td>{{ achievement.description }}</td>
+                        <td>{{ achievement.createdAt ? achievement.createdAt|date('d/m/Y H:i') : '' }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">No achievements found</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

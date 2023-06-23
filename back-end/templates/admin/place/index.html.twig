@@ -1,0 +1,59 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Places{% endblock %}
+
+{% block content %}
+
+<div class="card">
+    <h5 class="card-header">Places <a class="btn btn-primary float-end" href="{{ path('app_place_new') }}">Create new</a></h5>
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="table-light">
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Sponsored</th>
+                    <th>Private</th>
+                    <th>Type</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                    <th>Author</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                {% for place in places %}
+                    <tr>
+                        <td>{{ place.id }}</td>
+                        <td>{{ place.title }}</td>
+                        <td>{{ place.status }}</td>
+                        <td>{{ place.sponsored }}</td>
+                        <td>{{ place.private }}</td>
+                        <td>{{ place.type }}</td>
+                        <td>{{ place.latitude }}</td>
+                        <td>{{ place.longitude }}</td>
+                        <td>{{ place.author | raw }}</td>
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{ path('app_place_edit', {'id': place.id}) }}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">No places found</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
+

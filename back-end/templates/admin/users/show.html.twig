@@ -1,0 +1,118 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}User{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-8">
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div class="avatar avatar-xl d-flex align-items-end">
+                            <img
+                            src="https://api.dicebear.com/5.x/avataaars/svg?seed={{ user.firstName }}"
+                            alt="avatar"
+                            class="rounded-circle border"
+                            />
+                            <h5 class="mx-2 mb-0">{{ user.firstName }} {{ user.lastName }}</h5>
+                    </div>
+                    
+                    <a class="btn btn-primary float-end" href="{{ path('app_user_index') }}"><i class="menu-icon tf-icons bx bx-caret-left"></i> Back to list</a>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>Experience</th>
+                                <td>{{ user.experience }}</td>
+                            </tr>
+                            <tr>
+                                <th>Rank</th>
+                                <td>{{ user.rank }}</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{ user.email }}</td>
+                            </tr>
+                            <tr>
+                                <th>Roles</th>
+                                <td>{{ user.roles ? user.roles|join(', ') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Created at</th>
+                                <td>{{ user.createdAt|date('d/m/y H:i') }}</td>
+                            </tr>
+
+                            <tr>
+                                <th>nb Private Achievements Left</th>
+                                <td>{{ user.nbPrivateAchievementsLeft }}</td>
+                            </tr>
+                            <tr>
+                                <th>nb Private Quests Left</th>
+                                <td>{{ user.nbPrivateQuestsLeft }}</td>
+                            </tr>
+                            <tr>
+                                <th>nb Private Stories Left</th>
+                                <td>{{ user.nbPrivateStoriesLeft }}</td>
+                            </tr>
+                            <tr>
+                                <th>nb Private Epics Left</th>
+                                <td>{{ user.nbPrivateEpicsLeft }}</td>
+                            </tr>
+                            <tr>
+                                <th>nb Private Articles Left</th>
+                                <td>{{ user.nbPrivateArticlesLeft }}</td>
+                            </tr>
+                            <tr>
+                                <th>nb Private Places Left</th>
+                                <td>{{ user.nbPrivatePlacesLeft }}</td>
+                            </tr>
+
+                            <tr>
+                                <th>nb Sponsored Achievements Left</th>
+                                <td>{{ user.nbSponsoredAchievementsLeft }}</td>
+                            </tr>
+                            <tr>
+                                <th>nb Sponsored Quests Left</th>
+                                <td>{{ user.nbSponsoredQuestsLeft }}</td>
+                            </tr>
+                            <tr>
+                                <th>nb Sponsored Stories Left</th>
+                                <td>{{ user.nbSponsoredStoriesLeft }}</td>
+                            </tr>
+                            <tr>
+                                <th>nb Sponsored Epics Left</th>
+                                <td>{{ user.nbSponsoredEpicsLeft }}</td>
+                            </tr>
+                            <tr>
+                                <th>nb Sponsored Articles Left</th>
+                                <td>{{ user.nbSponsoredArticlesLeft }}</td>
+                            </tr>
+                            <tr>
+                                <th>nb Sponsored Places Left</th>
+                                <td>{{ user.nbSponsoredPlacesLeft }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="btn btn-primary float-end mt-2"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                </div>
+            </div>
+            {% include 'admin/epic/subindex.html.twig' %}
+            {% include 'admin/story/subindex.html.twig' %}
+            {% include 'admin/quest/subindex.html.twig' %}
+            {% include 'admin/achievement/subindex.html.twig' %}
+            {% include 'admin/subscription/subindex.html.twig' %}
+        </div>
+        <div class="col-4">
+            {% include 'admin/friendship/subindex.html.twig' %}
+            {% include 'admin/invitation/subindex.html.twig' %}
+            {% include 'admin/continent/subindex.html.twig' %}
+            {% include 'admin/country/subindex.html.twig' %}
+            {% include 'admin/region/subindex.html.twig' %}
+            {% include 'admin/user_node/index.html.twig' %}
+        </div>
+    </div>
+
+
+
+{% endblock %}
+

@@ -1,0 +1,47 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Likes{% endblock %}
+
+{% block content %}
+
+<div class="card">
+    <h5 class="card-header">Likes <a class="btn btn-primary float-end" href="{{ path('app_like_new') }}">Create new</a></h5>
+    <div>
+        <table class="table">
+            <thead class="table-light">
+                <tr>
+                    <th>Article</th>
+                    <th>User</th>
+                    <th>Created At</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                {% for like in likes %}
+                    <tr>
+                        <td>{{ like.article }}</td>
+                        <td>{{ like.user | raw }}</td>
+                        <td>{{ like.createdAt ? like.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{ path('app_like_edit', {'id': like.id}) }}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">No likes found</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
+

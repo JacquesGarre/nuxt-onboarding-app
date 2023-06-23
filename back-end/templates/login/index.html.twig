@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration{% endblock %}
+
+{% block stylesheets %}
+
+    <link rel="stylesheet" href="../assets/vendor/css/pages/page-auth.css" />
+
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="container-xxl">
+        <div class="authentication-wrapper authentication-basic container-p-y">
+            <div class="authentication-inner">
+                <!-- Register -->
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Logo -->
+                        <div class="app-brand justify-content-center mb-2">
+                            <a href="{{ path('app_login') }}" class="app-brand-link gap-2">
+                                <span class="app-brand-text demo text-body fw-bolder">FOGO Api | Admin</span>
+                            </a>
+                        </div>
+                        <div class="app-brand justify-content-center">
+                            <span>{{ shivas_app_version }}</span>
+                        </div>
+                        <form class="mb-3" action="{{ path('app_login') }}" method="POST">
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Email</label>
+                                <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" placeholder="Enter your email" autofocus>
+                            </div>
+                            <div class="mb-3 form-password-toggle">
+                                <div class="d-flex justify-content-between">
+                                    <label class="form-label" for="password">Password</label>
+                                </div>
+                                <div class="input-group input-group-merge">
+                                    <input type="password" id="password" name="_password"  class="form-control" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" >
+                                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                                </div>
+                            </div>
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                            <input type="hidden" name="_target_path" value="/admin"> 
+                            <!-- <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="remember-me" />
+                                    <label class="form-check-label" for="remember-me"> Remember Me </label>
+                                </div>
+                            </div> -->
+                            <div class="mb-3">
+                                <button class="btn btn-primary d-grid w-100" type="submit">Log in</button>
+                            </div>
+                            
+                            {% if error %}
+                                <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                            {% endif %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

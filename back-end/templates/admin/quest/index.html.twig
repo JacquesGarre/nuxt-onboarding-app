@@ -1,0 +1,62 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Quests{% endblock %}
+
+{% block content %}
+
+<div class="card">
+    <h5 class="card-header">Quests <a class="btn btn-primary float-end" href="{{ path('app_quest_new') }}">Create new</a></h5>
+    <div>
+        <table class="table">
+            <thead class="table-light">
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Categories</th>
+                    <th>Temporary</th>
+                    <th>Description</th>
+                    <th>Experience reward</th>
+                    <th>Created At</th>
+                    <th>Updated At</th>
+                    <th>Status</th>
+                    <th>Author</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+            {% for quest in quests %}
+                    <tr>
+                        <td>{{ quest.id }}</td>
+                        <td>{{ quest.title }}</td>
+                        <td>{{ quest.categories|join(', ') }}</td>
+                        <td>{{ quest.temporary }}</td>
+                        <td>{{ quest.description }}</td>
+                        <td>{{ quest.experienceAward }}</td>
+                        <td>{{ quest.createdAt ? quest.createdAt|date('d/m/Y H:i') : '' }}</td>
+                        <td>{{ quest.updatedAt ? quest.updatedAt|date('d/m/Y H:i') : '' }}</td>
+                        <td>{{ quest.status }}</td>
+                        <td>{{ quest.author | raw}}</td>
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{ path('app_quest_edit', {'id': quest.id}) }}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="7">No quests found</td>
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
+

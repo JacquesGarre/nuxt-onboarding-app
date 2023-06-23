@@ -1,0 +1,25 @@
+<div class="card my-4">
+    <h5 class="card-header">Countries visited</h5>
+    <div>
+        <table class="table">
+            <thead class="table-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Unlocked At</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                {% for country in user_countries %}
+                    <tr>
+                        <td>{{ country.name }}</td>
+                        <td>{{ country.createdAt ? country.createdAt|date('d/m/Y H:i') : '' }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="7">No countries found</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

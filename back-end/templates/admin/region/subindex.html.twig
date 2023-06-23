@@ -1,0 +1,27 @@
+<div class="card my-4">
+    <h5 class="card-header">Regions visited</h5>
+    <div>
+        <table class="table">
+            <thead class="table-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Country</th>
+                    <th>Unlocked At</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                {% for region in user_regions %}
+                    <tr>
+                        <td>{{ region.name }}</td>
+                        <td>{{ region.country }}</td>
+                        <td>{{ region.createdAt ? region.createdAt|date('d/m/Y H:i') : '' }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="7">No regions found</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

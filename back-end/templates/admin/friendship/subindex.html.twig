@@ -1,0 +1,27 @@
+<div class="card mb-4">
+    <h5 class="card-header">My friends <a class="btn btn-primary float-end" href="{{ path('app_friendship_new', {'userID':user.id}) }}">Create new</a></h5>
+    <div>
+        <table class="table">
+            <thead class="table-light">
+                <tr>
+                    <th>Friend</th>
+                    <th>Created At</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                {% for friend in user_friends %}
+                    <tr>
+                        <td>{{ (friend.user1.id == user.id ? friend.user2 : friend.user1) | raw}}</td>
+                        <td>{{ friend.createdAt ? friend.createdAt|date('d/m/Y H:i') : '' }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3">No friends found</td>
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+</div>
+

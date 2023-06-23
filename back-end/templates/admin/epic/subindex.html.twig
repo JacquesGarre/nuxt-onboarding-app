@@ -1,0 +1,34 @@
+<div class="card my-4">
+    <h5 class="card-header">My epics</h5>
+    <div>
+        <table class="table">
+            <thead class="table-light">
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Started At</th>
+                    <th>Finished at</th>
+                    <th>Experience earned</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+            {% for epic in user_epics %}
+                    <tr>
+                        <td>{{ epic.title }}</td>
+                        <td>{{ epic.description }}</td>
+                        <td>{{ epic.status }}</td>
+                        <td>{{ epic.startedAt ? epic.startedAt|date('d/m/Y H:i') : '' }}</td>
+                        <td>{{ epic.endedAt ? epic.endedAt|date('d/m/Y H:i') : '' }}</td>
+                        <td>{{ epic.experienceEarned }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="7">No epics found</td>
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+</div>

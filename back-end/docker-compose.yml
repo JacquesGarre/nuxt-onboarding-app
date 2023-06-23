@@ -1,0 +1,27 @@
+version: '3.1'
+
+services:
+
+  db:
+    container_name: db_container
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+    volumes:
+       - database_data:/var/lib/mysql
+    ports:
+      - "33066:3306"
+    command: --init-file init.sql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+volumes:
+###> doctrine/doctrine-bundle ###
+  database_data:
+    driver: local
+###< doctrine/doctrine-bundle ###

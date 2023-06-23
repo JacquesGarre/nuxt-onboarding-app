@@ -1,0 +1,53 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Packs{% endblock %}
+
+{% block content %}
+
+<div class="card">
+    <h5 class="card-header">Packs <a class="btn btn-primary float-end" href="{{ path('app_pack_new') }}">Create new</a></h5>
+    <div>
+        <table class="table">
+            <thead class="table-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Duration</th>
+                    <th>Status</th>
+                    <th>Price</th>
+                    <th>Discount</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+            {% for pack in packs %}
+                    <tr>
+                        <td>{{ pack.name }}</td>
+                        <td>{{ pack.type }}</td>
+                        <td>{{ pack.duration }}</td>
+                        <td>{{ pack.status }}</td>
+                        <td>{{ pack.price }}</td>
+                        <td>{{ pack.discount }}</td>
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{ path('app_pack_edit', {'id': pack.id}) }}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">No packs found</td>
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

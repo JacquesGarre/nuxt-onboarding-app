@@ -1,0 +1,36 @@
+<div class="card">
+    <h5 class="card-header">My quests</h5>
+    <div>
+        <table class="table">
+            <thead class="table-light">
+                <tr>
+                    <th>Title</th>
+                    <th>Temporary</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Started At</th>
+                    <th>Finished at</th>
+                    <th>Experience earned</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+            {% for quest in user_quests %}
+                    <tr>
+                        <td>{{ quest.title }}</td>
+                        <td>{{ quest.temporary }}</td>
+                        <td>{{ quest.description }}</td>
+                        <td>{{ quest.status }}</td>
+                        <td>{{ quest.startedAt ? quest.startedAt|date('d/m/Y H:i') : '' }}</td>
+                        <td>{{ quest.endedAt ? quest.endedAt|date('d/m/Y H:i') : '' }}</td>
+                        <td>{{ quest.experienceEarned }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="7">No quests found</td>
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,217 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
+parameters:
+    router.request_context.host: '%env(resolve:HOST)%'
+    router.request_context.scheme: '%env(resolve:SCHEME)%'
+    asset.request_context.secure: true
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+
+    App\Filter\RadiusFilter:
+        # # The "arguments" key can be omitted if the autowiring is enabled
+        # arguments: [ '@doctrine', ~, '@?logger' ]
+        # # The "tags" key can be omitted if the autoconfiguration is enabled
+        # tags: [ 'api_platform.filter' ]
+
+    App\EventListener\UserEventListener:
+        tags:
+            -
+                name: 'doctrine.event_listener'
+                event: 'prePersist'
+                priority: 500
+                connection: 'default'
+            -
+                name: 'doctrine.event_listener'
+                event: 'postPersist'
+                priority: 500
+                connection: 'default'
+    App\EventListener\ApiTokenEventListener:
+        tags:
+            -
+                name: 'doctrine.event_listener'
+                event: 'prePersist'
+                priority: 500
+                connection: 'default'
+            -
+                name: 'doctrine.event_listener'
+                event: 'preUpdate'
+                priority: 500
+                connection: 'default'
+    App\EventListener\ArticleEventListener:
+        tags:
+            -
+                name: 'doctrine.event_listener'
+                event: 'prePersist'
+                priority: 500
+                connection: 'default'
+            -
+                name: 'doctrine.event_listener'
+                event: 'preUpdate'
+                priority: 500
+                connection: 'default'
+    App\EventListener\UserNodeEventListener:
+        tags:
+            -
+                name: 'doctrine.event_listener'
+                event: 'prePersist'
+                priority: 500
+                connection: 'default'
+    App\EventListener\AchievementEventListener:
+        tags:
+            -
+                name: 'doctrine.event_listener'
+                event: 'prePersist'
+                priority: 500
+                connection: 'default'
+            -
+                name: 'doctrine.event_listener'
+                event: 'preUpdate'
+                priority: 500
+                connection: 'default'
+    App\EventListener\QuestEventListener:
+        tags:
+            -
+                name: 'doctrine.event_listener'
+                event: 'prePersist'
+                priority: 500
+                connection: 'default'
+            -
+                name: 'doctrine.event_listener'
+                event: 'preUpdate'
+                priority: 500
+                connection: 'default'
+    App\EventListener\StoryEventListener:
+        tags:
+            -
+                name: 'doctrine.event_listener'
+                event: 'prePersist'
+                priority: 500
+                connection: 'default'
+            -
+                name: 'doctrine.event_listener'
+                event: 'preUpdate'
+                priority: 500
+                connection: 'default'
+    App\EventListener\EpicEventListener:
+        tags:
+            -
+                name: 'doctrine.event_listener'
+                event: 'prePersist'
+                priority: 500
+                connection: 'default'
+                tags:
+            -
+                name: 'doctrine.event_listener'
+                event: 'preUpdate'
+                priority: 500
+                connection: 'default'
+    App\EventListener\RewardEventListener:
+        tags:
+            -
+                name: 'doctrine.event_listener'
+                event: 'postPersist'
+                priority: 500
+                connection: 'default'
+            -
+                name: 'doctrine.event_listener'
+                event: 'postUpdate'
+                priority: 500
+                connection: 'default'
+    App\EventListener\FeedbackEventListener:
+        tags:
+            -
+                name: 'doctrine.event_listener'
+                event: 'prePersist'
+                priority: 500
+                connection: 'default'
+    App\EventListener\FriendshipEventListener:
+        tags:
+            -
+                name: 'doctrine.event_listener'
+                event: 'prePersist'
+                priority: 500
+                connection: 'default'
+    App\EventListener\InvitationEventListener:
+        tags:
+            -
+                name: 'doctrine.event_listener'
+                event: 'prePersist'
+                priority: 500
+                connection: 'default'
+            -
+                name: 'doctrine.event_listener'
+                event: 'postPersist'
+                priority: 500
+                connection: 'default'
+    App\EventListener\CommentEventListener:
+        tags:
+            -
+                name: 'doctrine.event_listener'
+                event: 'prePersist'
+                priority: 500
+                connection: 'default'
+                tags:
+            -
+                name: 'doctrine.event_listener'
+                event: 'preUpdate'
+                priority: 500
+                connection: 'default'
+    App\EventListener\LikeEventListener:
+        tags:
+            -
+                name: 'doctrine.event_listener'
+                event: 'prePersist'
+                priority: 500
+                connection: 'default'
+    App\EventListener\PlaceEventListener:
+        tags:
+            -
+                name: 'doctrine.event_listener'
+                event: 'prePersist'
+                priority: 500
+                connection: 'default'
+                tags:
+    App\EventListener\SubscriptionEventListener:
+        tags:
+            -
+                name: 'doctrine.event_listener'
+                event: 'prePersist'
+                priority: 500
+                connection: 'default'
+                tags:
+            -
+                name: 'doctrine.event_listener'
+                event: 'preUpdate'
+                priority: 500
+                connection: 'default'
+            -
+                name: 'doctrine.event_listener'
+                event: 'postUpdate'
+                priority: 500
+                connection: 'default'
+    App\EventListener\CreditEventListener:
+        tags:
+            -
+                name: 'doctrine.event_listener'
+                event: 'postPersist'
+                priority: 500
+                connection: 'default'
+    App\State\UserNodeProcessor:
+        bind:
+            $persistProcessor: '@api_platform.doctrine.orm.state.persist_processor'

@@ -1,0 +1,29 @@
+<div class="card mb-4">
+    <h5 class="card-header">My invitations <a class="btn btn-primary float-end" href="{{ path('app_invitation_new', {'userID':user.id}) }}">Create new</a></h5>
+    <div>
+        <table class="table">
+            <thead class="table-light">
+                <tr>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Created At</th>
+                    <th>Accepted At</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                {% for invitation in user_invitations %}
+                    <tr>
+                        <td>{{ invitation.email }}</td>
+                        <td>{{ invitation.status }}</td>
+                        <td>{{ invitation.createdAt ? invitation.createdAt|date('d/m/Y H:i') : '' }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3">No invitations found</td>
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+</div>

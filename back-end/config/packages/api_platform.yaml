@@ -1,0 +1,9 @@
+api_platform:
+    swagger:
+         api_keys:
+              API_KEY:
+                name: x-api-key
+                type: header
+              JWT:
+                name: Authorization
+                type: header

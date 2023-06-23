@@ -1,0 +1,25 @@
+<div class="card my-4">
+    <h5 class="card-header">Continents visited</h5>
+    <div>
+        <table class="table">
+            <thead class="table-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Unlocked At</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                {% for continent in user_continents %}
+                    <tr>
+                        <td>{{ continent.name }}</td>
+                        <td>{{ continent.createdAt ? continent.createdAt|date('d/m/Y H:i') : '' }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="7">No continents found</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
