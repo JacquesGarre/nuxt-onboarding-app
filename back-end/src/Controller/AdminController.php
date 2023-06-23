@@ -7,31 +7,19 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\SecurityBundle\Security;
 use App\Repository\UserRepository;
-use App\Repository\ArticleRepository;
-use App\Repository\RankRepository;
-use App\Repository\AchievementRepository;
 
 class AdminController extends AbstractController
 {   
     private $security;
     private $userRepository;
-    private $articleRepository;
-    private $rankRepository;
-    private $achievementRepository;
 
     public function __construct(
         Security $security, 
-        UserRepository $userRepository, 
-        ArticleRepository $articleRepository,
-        RankRepository $rankRepository,
-        AchievementRepository $achievementRepository
+        UserRepository $userRepository
     )
     {
        $this->security = $security;
        $this->userRepository = $userRepository;
-       $this->articleRepository = $articleRepository;
-       $this->rankRepository = $rankRepository;
-       $this->achievementRepository = $achievementRepository;
     }
 
     #[Route('/admin', name: 'app_admin')]
@@ -40,11 +28,11 @@ class AdminController extends AbstractController
         return $this->render('admin/dashboard/dashboard.html.twig', [
             'currentUser' => $this->security->getUser(),
             'totalUsers' => count($this->userRepository->findAll()),
-            'totalPublishedArticles' => count($this->articleRepository->findBy(['status' => 'published'])),
-            'totalPendingArticles' => count($this->articleRepository->findBy(['status' => 'draft'])),
-            'totalRanks' => count($this->rankRepository->findAll()),
-            'totalActiveAchievements' => count($this->achievementRepository->findBy(['status' => 'active'])),
-            'totalPendingAchievements' => count($this->achievementRepository->findBy(['status' => 'draft']))
+            'totalPublishedArticles' => 0,
+            'totalPendingArticles' => 0,
+            'totalRanks' => 0,
+            'totalActiveAchievements' => 0,
+            'totalPendingAchievements' => 0
         ]);
     }
 

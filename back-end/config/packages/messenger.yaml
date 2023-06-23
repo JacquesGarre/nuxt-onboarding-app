@@ -21,7 +21,4 @@ framework:
             # Symfony\Component\Notifier\Message\SmsMessage: async
 
             # Route your messages to the transports
-            'App\Message\EarnExperience': async
-            'App\Message\TriggerAwards': async
-            'App\Message\CheckForUnlockedItemsOnNewUserNode': async
-            'App\Message\FindAchievementsAroundUserNode': async
+            # 'App\Message\EarnExperience': async

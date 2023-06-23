@@ -10,21 +10,15 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\SecurityBundle\Security;
-use App\Repository\UserNodeRepository;
-use App\Repository\FriendshipRepository;
 
 #[Route('/admin/users')]
 class UserController extends AbstractController
 {
     private $security;
-    private $userNodeRepository;
-    private $friendshipRepository;
 
-    public function __construct(Security $security, UserNodeRepository $userNodeRepository, FriendshipRepository $friendshipRepository)
+    public function __construct(Security $security)
     {
        $this->security = $security;
-       $this->userNodeRepository = $userNodeRepository;
-       $this->friendshipRepository = $friendshipRepository;
     }
 
     #[Route('/', name: 'app_user_index', methods: ['GET'])]
@@ -60,17 +54,17 @@ class UserController extends AbstractController
     {
         return $this->render('admin/users/show.html.twig', [
             'currentUser' => $this->security->getUser(),
-            'user_nodes' => $user->getUserNodes(),
-            'user_epics' => $user->getUserEpics(),
-            'user_stories' => $user->getUserStories(),
-            'user_quests' => $user->getUserQuests(),
-            'user_continents' => $user->getUserContinents(),
-            'user_countries' => $user->getUserCountries(),
-            'user_regions' => $user->getUserRegions(),
-            'user_achievements' => $user->getUserAchievements(),
-            'user_friends' => $this->friendshipRepository->getAllFriendshipOfUser($user),
-            'user_invitations' => $user->getInvitations(),
-            'user_subscriptions' => $user->getSubscriptions(),
+            'user_nodes' => [],
+            'user_epics' => [],
+            'user_stories' => [],
+            'user_quests' => [],
+            'user_continents' => [],
+            'user_countries' => [],
+            'user_regions' => [],
+            'user_achievements' => [],
+            'user_friends' => [],
+            'user_invitations' =>[],
+            'user_subscriptions' => [],
             'user' => $user,
         ]);
     }
