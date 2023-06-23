@@ -20,7 +20,7 @@
 
 # Create admin :
 
-- php bin/console create:user <email> <password> <firstName> <lastName>
+- php bin/console create:user
 
 # Main routes : 
 
