@@ -1,51 +1,51 @@
 # Nuxt dev/build outputs
-.output
-.nuxt
-.nitro
-.cache
-dist
+/front-end/.output
+/front-end/.nuxt
+/front-end/.nitro
+/front-end/.cache
+/front-end/dist
 
 # Node dependencies
-node_modules
+/front-end/node_modules
 
 # Logs
-logs
-*.log
+/front-end/logs
+/front-end/*.log
 
 # Misc
-.DS_Store
-.fleet
-.idea
+/front-end/.DS_Store
+/front-end/.fleet
+/front-end/.idea
 
 # Local env files
-.env
-.env.*
-!.env.example
+/front-end/.env
+/front-end/.env.*
+/front-end/!.env.example
 
 
 ###> symfony/framework-bundle ###
-/.env.local
-/.env.local.php
-/.env.*.local
-.env
-/config/secrets/prod/prod.decrypt.private.php
-/public/bundles/
-/var/
-/vendor/
-geos-3.4.2/
-geos-3.4.2*
+/back-end/.env.local
+/back-end/.env.local.php
+/back-end/.env.*.local
+/back-end.env
+/back-end/config/secrets/prod/prod.decrypt.private.php
+/back-end/public/bundles/
+/back-end/var/
+/back-end/vendor/
+/back-end/geos-3.4.2/
+/back-end/geos-3.4.2*
 ###< symfony/framework-bundle ###
 
 ###> phpunit/phpunit ###
-/phpunit.xml
-.phpunit.result.cache
+/back-end/phpunit.xml
+/back-end/.phpunit.result.cache
 ###< phpunit/phpunit ###
 
 ###> symfony/phpunit-bridge ###
-.phpunit.result.cache
-/phpunit.xml
+/back-end/.phpunit.result.cache
+/back-end/phpunit.xml
 ###< symfony/phpunit-bridge ###
 
 ###> lexik/jwt-authentication-bundle ###
-/config/jwt/*.pem
+/back-end/config/jwt/*.pem
 ###< lexik/jwt-authentication-bundle ###

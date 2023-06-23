@@ -16,7 +16,6 @@
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.14",
         "halaxa/json-machine": "^1.1",
-        "kreait/firebase-php": "^7.2",
         "lexik/jwt-authentication-bundle": "^2.18",
         "mjaschen/phpgeo": "^4.2",
         "nelmio/cors-bundle": "^2.3",
