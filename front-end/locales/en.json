@@ -38,6 +38,7 @@
     "removeAdminBtn": "Remove from admins",
     "fieldRequiredError": "{fieldLabel} is required",
     "minLengthError": "{fieldLabel} must be at least {length} characters long",
+    "emailFormatError": "Invalid email format",
     "organizationAdminsTableTitle": "Administrators",
     "organizationAdminsTableNameColumn": "Name",
     "organizationAdminsTableRolesColumn": "Roles",
@@ -69,5 +70,15 @@
     "dangerClassLabel": "Red",
     "successClassLabel": "Green",
     "primaryClassLabel": "Purple",
-    "admin":"Admin"
+    "admin":"Admin",
+    "firstName":"First name",
+    "lastName":"Last name",
+    "email": "Email",
+    "password": "Password",
+    "iAgreeThe": "I agree the",
+    "termsAndConditions": "Terms and conditions",
+    "signUp":"Sign up",
+    "passwordConfirmation": "Password confirmation",
+    "mustBeSameThanError": "{field1} must be the same than {field2}",
+    "acceptingTermsAndConditions": "You have to accept our terms and conditions"
 }
