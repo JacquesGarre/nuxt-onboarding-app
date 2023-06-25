@@ -15,8 +15,6 @@
                     <th>Firstname</th>
                     <th>Lastname</th>
                     <th>Roles</th>
-                    <th>Rank</th>
-                    <th>Experience</th>
                     <th>Is verified</th>
                     <th>Created at</th>
                     <th>Updated at</th>
@@ -39,8 +37,6 @@
                         <td>{{ user.firstName }}</td>
                         <td>{{ user.lastName }}</td>
                         <td>{{ user.roles ? user.roles|join(', ') : '' }}</td>
-                        <td>{{ user.rank }}</td>
-                        <td>{{ user.experience }}</td>
                         <td>{{ user.isVerified }}</td>
                         <td>{{ user.createdAt|date('d/m/y H:i') }}</td>
                         <td>{{ user.updatedAt|date('d/m/y H:i') }}</td>

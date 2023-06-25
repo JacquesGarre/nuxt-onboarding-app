@@ -21,18 +21,6 @@ class ApiTokenType extends AbstractType
             ->add('patchUsers')
             ->add('putUsers')
             ->add('deleteUsers')
-
-            ->add('getMobileAppSettings')
-            ->add('postMobileAppSettings')
-            ->add('patchMobileAppSettings')
-            ->add('putMobileAppSettings')
-            ->add('deleteMobileAppSettings')
-
-            ->add('getArticles')
-            ->add('postArticles')
-            ->add('patchArticles')
-            ->add('putArticles')
-            ->add('deleteArticles')
         ;
     }
 
