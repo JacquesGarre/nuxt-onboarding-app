@@ -218,7 +218,7 @@ export default {
                     method: 'POST',
                     body: this.user
                 });
-                
+
                 if (res.status == 201 || res.status == 200) {
                     alert('created');
                 } else {
