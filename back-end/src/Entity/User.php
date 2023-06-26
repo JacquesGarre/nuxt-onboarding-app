@@ -74,6 +74,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Groups('user')]
     private ?bool $isVerified = null;
 
+    #[ORM\Column]
+    private ?bool $admin = null;
+
+    #[ORM\ManyToOne(inversedBy: 'users')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Organization $organization = null;
+
     public function __construct()
     {
     }
@@ -223,6 +230,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function isAdmin(): ?bool
+    {
+        return $this->admin;
+    }
+
+    public function setAdmin(bool $admin): static
+    {
+        $this->admin = $admin;
+
+        return $this;
+    }
+
+    public function getOrganization(): ?Organization
+    {
+        return $this->organization;
+    }
+
+    public function setOrganization(?Organization $organization): static
+    {
+        $this->organization = $organization;
 
         return $this;
     }

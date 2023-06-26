@@ -1,5 +1,20 @@
 <template>
     <form role="form text-left" @submit.prevent="registerUser">
+        <h6 class="text-center">{{ $t('yourWorkspace') }}</h6>
+        <div class="mb-3">
+            <input 
+                type="text" 
+                class="form-control" 
+                :placeholder="$t('organizationName')" 
+                :aria-label="$t('organizationName')" 
+                aria-describedby="email-addon"
+                :class="{ 'is-invalid': v$.organization.name.$errors.length, 'hasbeenfocused':v$.organization.name.$dirty }"
+                v-model="organization.name">
+                <div class="invalid-feedback" v-for="error of v$.organization.name.$errors" :key="error.$uid">
+                    {{ error.$message }}
+                </div>
+        </div>
+        <h6 class="text-center">{{ $t('yourData') }}</h6>
         <div class="mb-3">
             <input 
                 type="text" 
@@ -106,14 +121,18 @@ export default {
     },
     data() {
         return {
-            checkedConditions: true,
+            checkedConditions: false,
             user: {
-                firstName: 'test3',
-                lastName: 'test3',
-                email: 'test3@test3.com',
-                password: 'Test1234'
+                firstName: '',
+                lastName: '',
+                email: '',
+                password: '',
+                admin: true
             },
-            confirmPassword: 'Test1234',
+            organization: {
+                name: '',
+            },
+            confirmPassword: '',
             error: null,
             processing: false
         };
@@ -146,6 +165,19 @@ export default {
                     ), 
                     sameAs(this.user.password)
                 )
+            },
+            organization: {
+                name: {
+                    required: helpers.withMessage(
+                        this.i18n.t(
+                            'fieldRequiredError', 
+                            {
+                                fieldLabel: this.i18n.t('organizationName')
+                            }
+                        ), 
+                        required
+                    )
+                }
             },
             user: {
                 firstName: { 
@@ -217,9 +249,27 @@ export default {
             const isFormCorrect = await this.v$.$validate()
             if (isFormCorrect) {
 
-                const endpoint = import.meta.env.VITE_API_URL + '/users';
                 const token = import.meta.env.VITE_API_TOKEN
 
+                // =>>> A REVOIR , ça peut créer l'organization sans le user si l'email est deja utilisé!!!
+
+                // Create organization
+                let endpoint = import.meta.env.VITE_API_URL + '/organizations';
+                let organization = await $fetch(endpoint, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "x-api-key": token
+                    },
+                    method: 'POST',
+                    body: this.organization
+                }).catch((error) => {
+                    this.error = error.data.detail
+                    this.processing = false;
+                })
+
+                // Create user               
+                this.user.organization = '/api/organizations/' + organization.id;
+                endpoint = import.meta.env.VITE_API_URL + '/users';
                 let res = await $fetch(endpoint, {
                     headers: {
                         "Content-Type": "application/json",
@@ -235,14 +285,14 @@ export default {
                     
                 }).catch((error) => {
                     this.error = error.data.detail
-
+                    this.processing = false;
                 })
-
-                this.processing = false;
+                        
 
        
             }
 
+            this.processing = false;
         }
     },
 };

@@ -2,6 +2,7 @@
 
 namespace App\Security;
 
+use App\Entity\Organization;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Repository\ApiTokenRepository;
@@ -75,11 +76,8 @@ class ApiKeyAuthenticator extends AbstractAuthenticator
         if(strpos($request->getPathInfo(), '/api/users') !== FALSE){
             $entity = 'Users';
         }
-        if(strpos($request->getPathInfo(), '/api/mobile_app_settings') !== FALSE){
-            $entity = 'MobileAppSettings';
-        }
-        if(strpos($request->getPathInfo(), '/api/articles') !== FALSE){
-            $entity = 'Articles';
+        if(strpos($request->getPathInfo(), '/api/organizations') !== FALSE){
+            $entity = 'Organizations';
         }
 
         $getScopeMethod = 'is'.ucfirst($method).ucfirst($entity);
@@ -96,6 +94,18 @@ class ApiKeyAuthenticator extends AbstractAuthenticator
                 })
             );            
         }
+
+        
+
+        // Exception for post organization -- Allowed with api token only
+        if($method == 'post' && $entity == 'Organizations'){
+            return new SelfValidatingPassport(
+                new UserBadge($apiToken, function() {
+                    return new User();
+                })
+            );            
+        }
+        
 
         $email = false;
         $jwtToken = $request->headers->get('Authorization');

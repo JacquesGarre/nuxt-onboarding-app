@@ -81,6 +81,10 @@
     "signingUp":"Signing up...",
     "passwordConfirmation": "Password confirmation",
     "mustBeSameThanError": "{field1} must be the same than {field2}",
-    "acceptingTermsAndConditions": "You have to accept our terms and conditions",
-    "email: This value is already used.": "An account with this email already exists"
+    "acceptingTermsAndConditions": "Please accept the terms and conditions",
+    "email: This value is already used.": "An account with this email already exists",
+    "name: This value is already used.": "A workspace already exists with this name",
+    "yourData": "Your data",
+    "yourWorkspace":"Your workspace",
+    "organizationName": "Name of your workspace"
 }
