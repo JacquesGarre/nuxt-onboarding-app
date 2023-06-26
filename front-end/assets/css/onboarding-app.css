@@ -76,3 +76,7 @@ textarea {
 .vfm__overlay {
     background-color:#0000001c
 }
+
+.alert-danger {
+    background-image: linear-gradient(310deg, #ea0606f2 0%, #ff3d597a 100%);
+}
