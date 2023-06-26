@@ -65,7 +65,7 @@
                     {{ error.$message }}
                 </div>
         </div>
-        <div class="form-check form-check-info text-left">
+        <div class="form-check form-switch text-left">
             <input 
                 class="form-check-input" 
                 type="checkbox" 
@@ -81,7 +81,13 @@
             </div>
         </div>
         <div class="text-center">
-            <button type="button" class="btn bg-gradient-dark w-100 my-4 mb-2" @click="registerUser">{{ $t('signUp') }}</button>
+            <button type="button" class="btn bg-gradient-dark w-100 my-4 mb-2" @click="registerUser" :class="{ disabled: processing }">
+                <span v-if="!processing">{{ $t('signUp') }}</span>
+                <span v-if="processing">{{ $t('signingUp') }}</span>
+            </button>
+        </div>
+        <div class="alert alert-danger text-white text-center mt-2" role="alert" v-if="error">
+            {{ $t(error) }}
         </div>
     </form>
 </template>
@@ -95,19 +101,21 @@ export default {
     setup() {
         return {
             v$: useVuelidate(),
-            i18n: useI18n()
+            i18n: useI18n(),
         }
     },
     data() {
         return {
-            checkedConditions: false,
+            checkedConditions: true,
             user: {
-                firstName: '',
-                lastName: '',
-                email: '',
-                password: ''
+                firstName: 'test3',
+                lastName: 'test3',
+                email: 'test3@test3.com',
+                password: 'Test1234'
             },
-            confirmPassword: ''
+            confirmPassword: 'Test1234',
+            error: null,
+            processing: false
         };
     },
     validations() {
@@ -204,6 +212,8 @@ export default {
     methods: {
         async registerUser() {
 
+            this.processing = true;
+
             const isFormCorrect = await this.v$.$validate()
             if (isFormCorrect) {
 
@@ -217,15 +227,20 @@ export default {
                     },
                     method: 'POST',
                     body: this.user
-                });
+                }).then((data) => {
 
-                if (res.status == 201 || res.status == 200) {
-                    alert('created');
-                } else {
-                    this.validError = res.data
-                    alert('error, check console');
-                    console.log(this.validError)
-                }
+                    alert('user created')
+                    console.log(data)
+                        
+                    
+                }).catch((error) => {
+                    this.error = error.data.detail
+
+                })
+
+                this.processing = false;
+
+       
             }
 
         }

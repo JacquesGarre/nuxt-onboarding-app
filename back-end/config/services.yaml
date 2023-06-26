@@ -47,3 +47,6 @@ services:
                 event: 'preUpdate'
                 priority: 500
                 connection: 'default'
+    App\EventListener\HttpKernel\CorsSubscriber:
+        tags:
+            - { name: kernel.event_subscriber }

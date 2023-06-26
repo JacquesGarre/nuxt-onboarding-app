@@ -3,6 +3,7 @@ export default defineNuxtConfig({
     modules: [
         '@pinia/nuxt',
     ],
+
     components: true,
     devServerHandlers: [],
     css: [

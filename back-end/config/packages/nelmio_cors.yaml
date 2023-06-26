@@ -1,10 +1,27 @@
 nelmio_cors:
     defaults:
         origin_regex: true
-        allow_origin: ['%env(CORS_ALLOW_ORIGIN)%']
-        allow_methods: ['GET', 'OPTIONS', 'POST', 'PUT', 'PATCH', 'DELETE']
-        allow_headers: ['Origin', 'Content-Type', 'Authorization', 'x-api-key']
+        allow_credentials: true
+        allow_origin: ['*']
+        allow_headers: ['*']
+        allow_methods: ['POST', 'PUT', 'GET', 'DELETE']
         expose_headers: ['Link']
         max_age: 3600
     paths:
-        '^/': null
+        '^/api/':
+            origin_regex: true
+            allow_credentials: true
+            allow_origin: ['*'] # You probably want to change this regex to match your real domain
+            allow_methods: ['GET', 'OPTIONS', 'POST', 'PUT', 'PATCH', 'DELETE']
+            allow_headers: ['*']
+            expose_headers: ['Link']
+            max_age: 3600
+        '^/': 
+            origin_regex: true
+            allow_credentials: true
+            allow_origin: ['*'] # You probably want to change this regex to match your real domain
+            allow_methods: ['GET', 'OPTIONS', 'POST', 'PUT', 'PATCH', 'DELETE']
+            allow_headers: ['*']
+            expose_headers: ['Link']
+            max_age: 3600
+

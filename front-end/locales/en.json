@@ -78,7 +78,9 @@
     "iAgreeThe": "I agree the",
     "termsAndConditions": "Terms and conditions",
     "signUp":"Sign up",
+    "signingUp":"Signing up...",
     "passwordConfirmation": "Password confirmation",
     "mustBeSameThanError": "{field1} must be the same than {field2}",
-    "acceptingTermsAndConditions": "You have to accept our terms and conditions"
+    "acceptingTermsAndConditions": "You have to accept our terms and conditions",
+    "email: This value is already used.": "An account with this email already exists"
 }
