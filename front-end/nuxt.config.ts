@@ -3,7 +3,6 @@ export default defineNuxtConfig({
     modules: [
         '@pinia/nuxt',
     ],
-
     components: true,
     devServerHandlers: [],
     css: [
@@ -16,10 +15,18 @@ export default defineNuxtConfig({
         '~/assets/css/onboarding-app.css',
     ],
     router: {
+        middleware: ['auth'], // Apply the 'auth' middleware to all routes
         options: {
             linkActiveClass: "active",
             linkExactActiveClass: "active"
-        }
+        },
+        
+        routes: [
+          {
+            path: '/admin',
+            middleware: 'auth'
+          },
+        ]
     },
     app: {
         head: {

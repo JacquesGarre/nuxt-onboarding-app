@@ -127,9 +127,9 @@ class ApiKeyAuthenticator extends AbstractAuthenticator
                 if (!$user) {
                     throw new UserNotFoundException();
                 }
-                if($user->isVerified() === false){
-                    throw new CustomUserMessageAuthenticationException('Email address not verified');
-                }
+                // if($user->isVerified() === false){
+                //     throw new CustomUserMessageAuthenticationException('Email address not verified');
+                // }
                 return $user;
             })
         );

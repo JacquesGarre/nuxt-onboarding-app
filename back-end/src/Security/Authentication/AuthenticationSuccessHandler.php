@@ -20,13 +20,13 @@ class AuthenticationSuccessHandler implements AuthenticationSuccessHandlerInterf
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token): Response
     {
-        if (!$token->getUser()->isVerified()) {
-            $data = [
-                'code' => Response::HTTP_UNAUTHORIZED,
-                'message' => 'Email address not verified'
-            ];
-            return new JsonResponse($data, Response::HTTP_UNAUTHORIZED);
-        }
+        // if (!$token->getUser()->isVerified()) {
+        //     $data = [
+        //         'code' => Response::HTTP_UNAUTHORIZED,
+        //         'message' => 'Email address not verified'
+        //     ];
+        //     return new JsonResponse($data, Response::HTTP_UNAUTHORIZED);
+        // }
 
         return $this->baseHandler->onAuthenticationSuccess($request, $token);
     }

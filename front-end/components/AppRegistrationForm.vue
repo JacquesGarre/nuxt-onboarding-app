@@ -123,6 +123,7 @@
 import { useI18n } from "vue-i18n";
 import { useVuelidate } from '@vuelidate/core'
 import { required, helpers, email, sameAs, minLength } from '@vuelidate/validators'
+import { useAuthStore } from '~/store/auth'
 
 export default {
     setup() {
@@ -288,11 +289,6 @@ export default {
                     },
                     method: 'POST',
                     body: this.organization
-                }).then((data) => {
-
-                    alert('user created, redirect to login')
-                    console.log(data)
-                    
                 }).catch((error) => {
                     this.error = error.data.detail
                     switch(this.error){
@@ -307,6 +303,33 @@ export default {
                     }
                     this.processing = false;
                 })
+                this.processing = false;
+
+                if(undefined !== organization.id && this.error == null){
+                    endpoint = import.meta.env.VITE_API_URL + '/auth';
+                    let response = await $fetch(endpoint, {
+                        headers: {
+                            "Content-Type": "application/json",
+                            "x-api-key": token
+                        },
+                        method: 'POST',
+                        body: {
+                            email: this.user.email,
+                            password: this.user.password
+                        }
+                    }).catch((error) => {
+                        this.error = error.data.detail
+
+                        alert(this.error);
+   
+                        this.processing = false;
+                    })
+     
+                    const authStore = useAuthStore()
+                    authStore.setToken(response.token)
+                    return navigateTo({ path: '/admin/organization' });
+                }
+                this.processing = false;
 
             }
 
