@@ -26,7 +26,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ApiResource(normalizationContext: ['groups' => ['user']])]
 #[ApiFilter(SearchFilter::class, properties: ['email' => 'exact'])]
 #[ORM\HasLifecycleCallbacks()]
-#[UniqueEntity('email')]
+#[UniqueEntity('email', message: 'This email is already in use.')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -40,7 +40,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\Email(
         message: 'The email {{ value }} is not a valid email.',
     )]
-    #[Groups('user')]
+    #[Groups(['user', 'post'])]
     private ?string $email = null;
 
     #[ORM\Column]
@@ -52,16 +52,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     #[Assert\NotBlank]
+    #[Groups(['user', 'post'])]
     private ?string $password = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank]
-    #[Groups('user')]
+    #[Groups(['user', 'post'])]
     private ?string $firstName = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank]
-    #[Groups('user')]
+    #[Groups(['user', 'post'])]
     private ?string $lastName = null;
 
     #[ORM\Column]
@@ -71,15 +72,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?\DateTimeInterface $updatedAt = null;
 
     #[ORM\Column]
-    #[Groups('user')]
+    #[Groups(['user', 'post'])]
     private ?bool $isVerified = null;
 
     #[ORM\Column]
+    #[Groups(['user', 'post'])]
     private ?bool $admin = null;
 
     #[ORM\ManyToOne(inversedBy: 'users')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups(['user', 'post'])]
     private ?Organization $organization = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['user', 'post'])]
+    private ?string $defaultLang = null;
 
     public function __construct()
     {
@@ -254,6 +261,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setOrganization(?Organization $organization): static
     {
         $this->organization = $organization;
+
+        return $this;
+    }
+
+    public function getDefaultLang(): ?string
+    {
+        return $this->defaultLang;
+    }
+
+    public function setDefaultLang(?string $defaultLang): static
+    {
+        $this->defaultLang = $defaultLang;
 
         return $this;
     }

@@ -9,9 +9,10 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: OrganizationRepository::class)]
-#[ApiResource]
+#[ApiResource(denormalizationContext:["groups" => ["post"]])]
 #[UniqueEntity('name')]
 class Organization
 {
@@ -21,24 +22,31 @@ class Organization
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups('post')]
     private ?string $name = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Groups('post')]
     private ?string $description = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups('post')]
     private ?string $address = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups('post')]
     private ?string $postalCode = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups('post')]
     private ?string $city = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups('post')]
     private ?string $country = null;
 
-    #[ORM\OneToMany(mappedBy: 'organization', targetEntity: User::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'organization', targetEntity: User::class, orphanRemoval: true, cascade: ["persist", "remove"])]
+    #[Groups('post')]
     private Collection $users;
 
     public function __construct()

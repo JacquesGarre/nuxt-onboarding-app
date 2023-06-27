@@ -50,3 +50,6 @@ services:
     App\EventListener\HttpKernel\CorsSubscriber:
         tags:
             - { name: kernel.event_subscriber }
+    App\EventSubscriber\DuplicateEntryExceptionSubscriber:
+        tags:
+            - { name: kernel.event_subscriber }

@@ -1,7 +1,7 @@
 <template>
     <form role="form text-left" @submit.prevent="registerUser">
-        <h6 class="text-center">{{ $t('yourWorkspace') }}</h6>
-        <div class="mb-3">
+        <h6 class="mb-3">{{ $t('yourWorkspace') }}</h6>
+        <div class="mb-4">
             <input 
                 type="text" 
                 class="form-control" 
@@ -14,33 +14,36 @@
                     {{ error.$message }}
                 </div>
         </div>
-        <h6 class="text-center">{{ $t('yourData') }}</h6>
-        <div class="mb-3">
-            <input 
-                type="text" 
-                class="form-control" 
-                :placeholder="$t('firstName')" 
-                :aria-label="$t('firstName')" 
-                aria-describedby="email-addon"
-                :class="{ 'is-invalid': v$.user.firstName.$errors.length, 'hasbeenfocused':v$.user.firstName.$dirty }"
-                v-model="user.firstName">
-                <div class="invalid-feedback" v-for="error of v$.user.firstName.$errors" :key="error.$uid">
-                    {{ error.$message }}
-                </div>
+        <h6 class="mb-3">{{ $t('yourData') }}</h6>
+        <div class="row">
+            <div class="mb-1 col-6">
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    :placeholder="$t('firstName')" 
+                    :aria-label="$t('firstName')" 
+                    aria-describedby="email-addon"
+                    :class="{ 'is-invalid': v$.user.firstName.$errors.length, 'hasbeenfocused':v$.user.firstName.$dirty }"
+                    v-model="user.firstName">
+                    <div class="invalid-feedback" v-for="error of v$.user.firstName.$errors" :key="error.$uid">
+                        {{ error.$message }}
+                    </div>
+            </div>
+            <div class="mb-1 col-6">
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    :placeholder="$t('lastName')" 
+                    :aria-label="$t('lastName')" 
+                    aria-describedby="email-addon"
+                    :class="{ 'is-invalid': v$.user.lastName.$errors.length, 'hasbeenfocused':v$.user.lastName.$dirty }"
+                    v-model="user.lastName">
+                    <div class="invalid-feedback" v-for="error of v$.user.lastName.$errors" :key="error.$uid">
+                        {{ error.$message }}
+                    </div>
+            </div>
         </div>
-        <div class="mb-3">
-            <input 
-                type="text" 
-                class="form-control" 
-                :placeholder="$t('lastName')" 
-                :aria-label="$t('lastName')" 
-                aria-describedby="email-addon"
-                :class="{ 'is-invalid': v$.user.lastName.$errors.length, 'hasbeenfocused':v$.user.lastName.$dirty }"
-                v-model="user.lastName">
-                <div class="invalid-feedback" v-for="error of v$.user.lastName.$errors" :key="error.$uid">
-                    {{ error.$message }}
-                </div>
-        </div>
+
         <div class="mb-3">
             <input 
                 type="email" 
@@ -80,7 +83,16 @@
                     {{ error.$message }}
                 </div>
         </div>
-        <div class="form-check form-switch text-left">
+        <h6 class="mb-3">{{ $t('yourLanguage') }}</h6>
+        <div class="mb-3">
+            <select class="form-select" aria-label="Language" v-model="user.defaultLang" id="lang-select">
+                <option value="fr">{{ $t('fr') }}</option>
+                <option value="en">{{ $t('en') }}</option>
+                <option value="es">{{ $t('es') }}</option>
+                <option value="it">{{ $t('it') }}</option>
+            </select>
+        </div>
+        <div class="form-check form-switch text-left mt-5">
             <input 
                 class="form-check-input" 
                 type="checkbox" 
@@ -95,7 +107,7 @@
                 {{ error.$message }}
             </div>
         </div>
-        <div class="text-center">
+        <div class="text-center mt-1">
             <button type="button" class="btn bg-gradient-dark w-100 my-4 mb-2" @click="registerUser" :class="{ disabled: processing }">
                 <span v-if="!processing">{{ $t('signUp') }}</span>
                 <span v-if="processing">{{ $t('signingUp') }}</span>
@@ -127,6 +139,7 @@ export default {
                 lastName: '',
                 email: '',
                 password: '',
+                defaultLang: 'en',
                 admin: true
             },
             organization: {
@@ -223,6 +236,17 @@ export default {
                         minLength(8)
                     )
                 },
+                defaultLang: {
+                    required: helpers.withMessage(
+                        this.i18n.t(
+                            'fieldRequiredError', 
+                            {
+                                fieldLabel: this.i18n.t('password')
+                            }
+                        ), 
+                        required
+                    ),
+                },
                 email: { 
                     required: helpers.withMessage(
                         this.i18n.t(
@@ -245,13 +269,15 @@ export default {
         async registerUser() {
 
             this.processing = true;
+            this.error = null;
 
             const isFormCorrect = await this.v$.$validate()
             if (isFormCorrect) {
 
                 const token = import.meta.env.VITE_API_TOKEN
 
-                // =>>> A REVOIR , ça peut créer l'organization sans le user si l'email est deja utilisé!!!
+                this.organization.users = [];
+                this.organization.users.push(this.user)
 
                 // Create organization
                 let endpoint = import.meta.env.VITE_API_URL + '/organizations';
@@ -262,34 +288,26 @@ export default {
                     },
                     method: 'POST',
                     body: this.organization
-                }).catch((error) => {
-                    this.error = error.data.detail
-                    this.processing = false;
-                })
-
-                // Create user               
-                this.user.organization = '/api/organizations/' + organization.id;
-                endpoint = import.meta.env.VITE_API_URL + '/users';
-                let res = await $fetch(endpoint, {
-                    headers: {
-                        "Content-Type": "application/json",
-                        "x-api-key": token
-                    },
-                    method: 'POST',
-                    body: this.user
                 }).then((data) => {
 
-                    alert('user created')
+                    alert('user created, redirect to login')
                     console.log(data)
-                        
                     
                 }).catch((error) => {
                     this.error = error.data.detail
+                    switch(this.error){
+                        case 'email: This email is already in use.':
+                            this.$v.user.email.$error = true;
+                            this.$v.user.email.$errors.push(this.error);
+                        break;
+                        case 'name: This value is already used.':
+                            this.$v.organization.name.$error = true;
+                            this.$v.organization.name.$errors.push(this.error);
+                        break;
+                    }
                     this.processing = false;
                 })
-                        
 
-       
             }
 
             this.processing = false;
