@@ -116,6 +116,9 @@
         <div class="alert alert-danger text-white text-center mt-2" role="alert" v-if="error">
             {{ $t(error) }}
         </div>
+        <div class="alert alert-success text-white text-center mt-2" role="alert" v-if="success">
+            {{ $t(success) }}
+        </div>
     </form>
 </template>
 <script>
@@ -123,7 +126,7 @@
 import { useI18n } from "vue-i18n";
 import { useVuelidate } from '@vuelidate/core'
 import { required, helpers, email, sameAs, minLength } from '@vuelidate/validators'
-import { useAuthStore } from '~/store/auth'
+import { useRegisterStore } from '~/store/register'
 
 export default {
     setup() {
@@ -148,6 +151,7 @@ export default {
             },
             confirmPassword: '',
             error: null,
+            success: null,
             processing: false
         };
     },
@@ -271,12 +275,11 @@ export default {
 
             this.processing = true;
             this.error = null;
-
+            this.success = null;
             const isFormCorrect = await this.v$.$validate()
+
             if (isFormCorrect) {
-
                 const token = import.meta.env.VITE_API_TOKEN
-
                 this.organization.users = [];
                 this.organization.users.push(this.user)
 
@@ -303,36 +306,13 @@ export default {
                     }
                     this.processing = false;
                 })
-                this.processing = false;
+                this.success = 'userCreated';
 
-                if(undefined !== organization.id && this.error == null){
-                    endpoint = import.meta.env.VITE_API_URL + '/auth';
-                    let response = await $fetch(endpoint, {
-                        headers: {
-                            "Content-Type": "application/json",
-                            "x-api-key": token
-                        },
-                        method: 'POST',
-                        body: {
-                            email: this.user.email,
-                            password: this.user.password
-                        }
-                    }).catch((error) => {
-                        this.error = error.data.detail
-
-                        alert(this.error);
-   
-                        this.processing = false;
-                    })
-     
-                    const authStore = useAuthStore()
-                    authStore.setToken(response.token)
-                    return navigateTo({ path: '/admin/organization' });
-                }
-                this.processing = false;
-
+                const registerStore = useRegisterStore()
+                registerStore.setRegister(true);
+                registerStore.setUser(this.user);
+                return navigateTo({ path: '/' });
             }
-
             this.processing = false;
         }
     },

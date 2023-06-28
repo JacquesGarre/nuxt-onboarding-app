@@ -91,5 +91,9 @@
     "fr": "French",
     "en": "English",
     "es": "Spanish",
-    "it": "Italian"
+    "it": "Italian",
+    "userCreated": "Your account has been created. Please look for the verification email in your inbox before to sign in.",
+    "signIn": "Sign in",
+    "signingIn": "Signing in...",
+    "rememberMe": "Remember me"
 }
