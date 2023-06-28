@@ -95,6 +95,19 @@
                     },
                 }
             }
+        },
+        methods: {
+            async signInUser() {
+                this.processing = true;
+                this.error = null;
+                this.success = null;
+                const isFormCorrect = await this.v$.$validate()
+
+                if (isFormCorrect) {
+                    alert(this.user.email + ' ' + this.user.password)
+                }
+                this.processing = false;
+            }
         }
     }
 
