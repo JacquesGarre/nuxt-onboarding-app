@@ -49,19 +49,6 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 ## Hours of development
 
 ### FRONT-END : LOGIN / SIGNUP / LAYOUT / MENU / ORGANIZATION / FORMS / MODAL (TOTAL 26h)
-
-13/06/23 : 3h
-
-14/06/23 : 3h
-
-15/06/23 : 3h
-
-16/06/23 : 3h
-
-17/06/23 : 7h
-
-18/06/23 : 7h
-
 ### FRONT-END : ROLES 
 
 19/06/23 : 4h
