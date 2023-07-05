@@ -6,9 +6,7 @@ const baseUrl = import.meta.env.VITE_API_URL
 export const useAuthStore = defineStore({
   id: 'auth',
   state: () => ({
-    /* Initialize state from local storage to enable user to stay logged in */
-    user: JSON.parse(localStorage.getItem('user')),
-    token: JSON.parse(localStorage.getItem('token')),
+    token: localStorage !== undefined && localStorage.getItem('token') !== undefined ? JSON.parse(localStorage.getItem('token')) : null,
   }),
   actions: {
     async login(user) {
@@ -21,9 +19,7 @@ export const useAuthStore = defineStore({
         body: user
       })
         .then(response => {
-            this.user = user
             this.token = response.token
-            localStorage.setItem('user', JSON.stringify(this.user))
             localStorage.setItem('token', JSON.stringify(this.token))
         })
         .catch(error => { throw error })
@@ -33,6 +29,6 @@ export const useAuthStore = defineStore({
       this.token = null
       localStorage.removeItem('user')
       localStorage.removeItem('token')
-    }
+    },
   }
 })

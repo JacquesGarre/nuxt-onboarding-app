@@ -7,7 +7,6 @@
         <ModalsContainer />
     </div>
 </template>
-<script setup>
+<script>
     import { ModalsContainer } from 'vue-final-modal'
-
 </script>
