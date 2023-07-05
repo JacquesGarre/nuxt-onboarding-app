@@ -6,8 +6,8 @@ export const useRegisterStore = defineStore('register', {
     state: () => ({
         registered: false,
         user: {
-            email: '',
-            password: ''
+            email: 'ascasc66asca6ccc@ascaascasccccsc.com', 
+            password: 'Test1234'
         }
     }),
 

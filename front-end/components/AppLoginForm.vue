@@ -49,6 +49,7 @@
     import { useVuelidate } from '@vuelidate/core'
     import { required, helpers, email, sameAs, minLength } from '@vuelidate/validators'
     import { useRegisterStore } from '~/store/register'
+    import { useAuthStore } from "~/store/auth";
 
     export default {
         setup() {
@@ -98,17 +99,35 @@
         },
         methods: {
             async signInUser() {
+
                 this.processing = true;
                 this.error = null;
                 this.success = null;
                 const isFormCorrect = await this.v$.$validate()
 
                 if (isFormCorrect) {
-                    alert(this.user.email + ' ' + this.user.password)
+                    useAuthStore()
+                    .login({
+                        email: this.user.email,
+                        password: this.user.password
+                    })
+                    .then((_response) => navigateTo({ path: '/admin/organization' }))
+                    .catch((error) => {
+
+                        if(error.data !== undefined){
+                            this.error = error.data.message
+                        } else {
+                            this.error = error.name
+                        }
+                        this.processing = false;
+                    });
+                } else {
+                    this.processing = false;
                 }
-                this.processing = false;
+                
             }
         }
     }
 
 </script>
+

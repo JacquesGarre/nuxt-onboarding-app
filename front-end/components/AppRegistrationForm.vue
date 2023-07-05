@@ -137,19 +137,19 @@ export default {
     },
     data() {
         return {
-            checkedConditions: true,
+            checkedConditions: false,
             user: {
-                firstName: 'ascccccccccasc',
-                lastName: 'asccccccccccasc',
-                email: 'ascasc666ccc@ascacccsc.com',
-                password: 'Test1234',
+                firstName: '',
+                lastName: '',
+                email: '',
+                password: '',
                 defaultLang: 'en',
                 admin: true
             },
             organization: {
-                name: '4s5a6c1sacccccccccccccc6c16asc1asc',
+                name: '',
             },
-            confirmPassword: 'Test1234',
+            confirmPassword: '',
             error: null,
             success: null,
             processing: false

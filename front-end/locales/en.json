@@ -96,5 +96,6 @@
     "signIn": "Sign in",
     "signingIn": "Signing in...",
     "rememberMe": "Remember me",
-    "FetchError": "A problem has been encountered, please contact the support"
+    "FetchError": "A problem has been encountered, please contact the support",
+    "Invalid credentials.": "Login failed : Invalid credentials"
 }
