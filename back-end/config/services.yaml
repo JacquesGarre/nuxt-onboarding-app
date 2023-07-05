@@ -6,7 +6,7 @@
 parameters:
     router.request_context.host: '%env(resolve:HOST)%'
     router.request_context.scheme: '%env(resolve:SCHEME)%'
-    asset.request_context.secure: true
+    asset.request_context.secure: false
 
 services:
     # default configuration for services in *this* file

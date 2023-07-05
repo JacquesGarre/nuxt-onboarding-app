@@ -11,3 +11,4 @@ app_logout:
 api_auth:
     path: /api/auth
     methods: ['POST']
+

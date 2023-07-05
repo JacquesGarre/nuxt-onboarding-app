@@ -8,7 +8,7 @@
 - php bin/console doctrine:migrations:migrate
 - php bin/console lexik:jwt:generate-keypair
 - php bin/console messenger:consume async -vv (Cf supervisor when production)
-- symfony server:start
+- php -S localhost:8000 -t public/
 - Create an API KEY in Tokens menu
 
 

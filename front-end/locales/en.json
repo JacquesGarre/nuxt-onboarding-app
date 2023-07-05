@@ -95,5 +95,6 @@
     "userCreated": "Your account has been created. Please look for the verification email in your inbox before to sign in.",
     "signIn": "Sign in",
     "signingIn": "Signing in...",
-    "rememberMe": "Remember me"
+    "rememberMe": "Remember me",
+    "FetchError": "A problem has been encountered, please contact the support"
 }

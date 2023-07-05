@@ -137,19 +137,19 @@ export default {
     },
     data() {
         return {
-            checkedConditions: false,
+            checkedConditions: true,
             user: {
-                firstName: '',
-                lastName: '',
-                email: '',
-                password: '',
+                firstName: 'ascccccccccasc',
+                lastName: 'asccccccccccasc',
+                email: 'ascasc666ccc@ascacccsc.com',
+                password: 'Test1234',
                 defaultLang: 'en',
                 admin: true
             },
             organization: {
-                name: '',
+                name: '4s5a6c1sacccccccccccccc6c16asc1asc',
             },
-            confirmPassword: '',
+            confirmPassword: 'Test1234',
             error: null,
             success: null,
             processing: false
@@ -293,7 +293,12 @@ export default {
                     method: 'POST',
                     body: this.organization
                 }).catch((error) => {
-                    this.error = error.data.detail
+                    if(error.data !== undefined){
+                        this.error = error.data.detail
+                    } else {
+                        this.error = error.name
+                    }
+                    
                     switch(this.error){
                         case 'email: This email is already in use.':
                             this.$v.user.email.$error = true;
@@ -304,14 +309,16 @@ export default {
                             this.$v.organization.name.$errors.push(this.error);
                         break;
                     }
-                    this.processing = false;
+     
                 })
-                this.success = 'userCreated';
 
-                const registerStore = useRegisterStore()
-                registerStore.setRegister(true);
-                registerStore.setUser(this.user);
-                return navigateTo({ path: '/' });
+                if(this.error == null){
+                    this.success = 'userCreated';
+                    const registerStore = useRegisterStore()
+                    registerStore.setRegister(true);
+                    registerStore.setUser(this.user);
+                    return navigateTo({ path: '/' });
+                }
             }
             this.processing = false;
         }

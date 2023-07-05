@@ -68,7 +68,7 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 
 ### BACK-END : SIGN UP
 
-26/06/23 : 7h
+26/06/23 : 10h
 
 ### BACK-END : SIGN IN
 

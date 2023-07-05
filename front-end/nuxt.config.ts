@@ -45,6 +45,7 @@ export default defineNuxtConfig({
                     src: '/js/soft-ui-dashboard.js', body: true
                 }
             ],
-        }
+        },
+        pageTransition: true,
     }
 })
